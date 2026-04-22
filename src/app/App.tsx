@@ -83,22 +83,94 @@ export default function App() {
 
               <div className={`hidden md:block w-[1px] h-4 transition-colors duration-500 ${scrolled ? 'bg-black/20' : 'bg-white/20'}`} />
 
-              <button
-                className={`flex items-center gap-2 transition-colors duration-300 ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
-                aria-label="Bag"
-              >
-                <ShoppingBag className="w-[18px] h-[18px]" strokeWidth={1.5} />
-                <span
-                  className="hidden md:inline text-[11px] tracking-[0.2em] uppercase font-light"
-                  style={{ fontFamily: 'Jost, sans-serif' }}
-                >
-                  Bag
-                </span>
+        {/* ── Mobile menu ── */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden overflow-hidden bg-black/60 backdrop-blur-xl border-t border-white/10"
+            >
+              <div className="px-8 py-8 flex flex-col gap-6">
+                {[
+                  { label: 'New Drops', href: '#new-drops' },
+                  { label: 'Men',       href: '#men' },
+                  { label: 'Women',     href: '#women' },
+                  { label: 'Lookbook',  href: '#lookbook' },
+                  { label: 'About',     href: '#about' },
+                ].map(({ label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-[13px] tracking-[0.3em] uppercase font-light text-white/80 hover:text-white hover:pl-2 transition-all duration-300"
+                    style={{ fontFamily: 'Jost, sans-serif' }}
+                  >
+                    {label}
+                  </a>
+
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative h-screen w-full overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1920"
+            alt="Hero"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
+        </div>
+
+        <div className="relative h-full flex flex-col items-center justify-center px-6 mt-8 md:mt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
+            className="text-center z-10 w-full max-w-4xl"
+          >
+            <h1
+              className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-12 text-white font-normal"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
+              The journey starts here<br />& changes your style.
+            </h1>
+            
+            <div className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl">
+              <div className="pl-6 md:pl-8 text-black/50 flex items-center justify-center">
+                <Search className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+              <input
+                type="text"
+                placeholder="SEARCH FOR AN ITEM"
+                className="w-full h-full bg-transparent border-none outline-none text-sm md:text-base px-6 tracking-widest text-black placeholder:text-black/30 font-light"
+                style={{ fontFamily: 'Jost, sans-serif' }}
+              />
+              <button className="h-full bg-[#B11226] text-white px-8 md:px-12 text-[10px] md:text-[12px] font-bold tracking-[0.2em] hover:bg-black transition-colors duration-300">
+                SEARCH
               </button>
 
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className={`lg:hidden transition-colors ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
+      {/* ATTITUDE / CONFIDENCE — clip-mask reveal from bottom */}
+      <section id="about" className="py-28 px-6 lg:px-12 bg-white overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            <div className="overflow-hidden">
+
+              <motion.h2
+                initial={{ y: '100%', opacity: 0 }}
+                whileInView={{ y: '0%', opacity: 1 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight"
+                style={{ fontFamily: 'Cormorant Garamond, serif' }}
               >
                 {menuOpen ? <X className="w-5 h-5" strokeWidth={1.5} /> : <Menu className="w-5 h-5" strokeWidth={1.5} />}
               </button>
@@ -403,7 +475,22 @@ export default function App() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.6, delay: 0.2, ease: 'easeInOut' }}
                 />
-              </svg>
+              </div>
+              <div className="mt-5 flex flex-col gap-0.5">
+                <h3 
+                  className="text-[13px] tracking-[0.06em] text-black uppercase" 
+                  style={{ fontFamily: 'Jost, sans-serif', fontWeight: 500 }}
+                >
+                  MENSWEAR
+                </h3>
+                <div 
+                  className="text-[13px] tracking-[0.06em] text-black/60 group-hover:text-black transition-colors duration-400 uppercase" 
+                  style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
+                >
+                  → EXPLORE COLLECTION
+
+                </div>
+              </div>
             </motion.div>
 
             {/* NOT FOR — each letter staggers up */}
