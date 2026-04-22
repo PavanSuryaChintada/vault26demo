@@ -1,61 +1,104 @@
-import { useEffect, useRef } from 'react';
-import { motion, useAnimation, AnimatePresence } from 'motion/react';
+import { useEffect, useState, useRef } from 'react';
+import { motion, useAnimation } from 'motion/react';
 import { Search } from 'lucide-react';
 
 interface PreloaderProps {
   onComplete: () => void;
 }
 
-const LINE1_WORDS = ['The', 'journey', 'starts', 'here'];
-const LINE2_WORDS = ['&', 'changes', 'your', 'style.'];
-const ALL_WORDS = [...LINE1_WORDS, ...LINE2_WORDS];
+// ─── EXACT same text as hero h1 ───────────────────────────────────────────────
+const FULL_TEXT_L1 = 'The journey starts here';
+const FULL_TEXT_L2 = '& changes your style.';
+const CHAR_DELAY_MS = 48;        // speed per character
+const CURSOR_BLINK_MS = 530;     // cursor blink speed
+const HOLD_AFTER_TYPED_MS = 700; // pause after fully typed before dissolve
 
 export default function Preloader({ onComplete }: PreloaderProps) {
+  const [typedL1, setTypedL1] = useState('');
+  const [typedL2, setTypedL2] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const [phase, setPhase] = useState<'typing' | 'dissolve' | 'done'>('typing');
+
   const bgControls = useAnimation();
-  const overlayControls = useAnimation();
+  const whiteControls = useAnimation();
   const searchControls = useAnimation();
-  const hasStarted = useRef(false);
 
+  const completedRef = useRef(false);
+
+  // ── Typewriter effect ──────────────────────────────────────────────────────
   useEffect(() => {
-    if (hasStarted.current) return;
-    hasStarted.current = true;
+    let cancelled = false;
+    let charIdx = 0;
+    const total = FULL_TEXT_L1.length + FULL_TEXT_L2.length;
 
-    const totalWords = ALL_WORDS.length;
-    // Each word takes ~0.18s stagger + 0.5s base duration
-    // Last word finishes around: 0.3 + (totalWords - 1) * 0.18 + 0.5 ≈ 2.1s
-    const textRevealDone = 0.3 + (totalWords - 1) * 0.18 + 0.5 + 0.4; // ~2.5s
+    const type = () => {
+      if (cancelled) return;
+      if (charIdx <= total) {
+        if (charIdx <= FULL_TEXT_L1.length) {
+          setTypedL1(FULL_TEXT_L1.slice(0, charIdx));
+        } else {
+          setTypedL1(FULL_TEXT_L1);
+          setTypedL2(FULL_TEXT_L2.slice(0, charIdx - FULL_TEXT_L1.length));
+        }
+        charIdx++;
+        setTimeout(type, CHAR_DELAY_MS);
+      } else {
+        // Fully typed — hold, then dissolve
+        setTimeout(() => {
+          if (!cancelled) setPhase('dissolve');
+        }, HOLD_AFTER_TYPED_MS);
+      }
+    };
 
-    // After text is done, start dissolving in the bg image
-    const timer = setTimeout(async () => {
-      // Fade in the hero background image (overlaid under the white)
+    type();
+    return () => { cancelled = true; };
+  }, []);
+
+  // ── Blinking cursor ────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (phase !== 'typing') return;
+    const iv = setInterval(() => setShowCursor(v => !v), CURSOR_BLINK_MS);
+    return () => clearInterval(iv);
+  }, [phase]);
+
+  // ── Dissolve sequence ──────────────────────────────────────────────────────
+  useEffect(() => {
+    if (phase !== 'dissolve' || completedRef.current) return;
+    completedRef.current = true;
+
+    // Hide cursor immediately
+    setShowCursor(false);
+
+    const run = async () => {
+      // 1. Fade in the background image (behind everything)
       await bgControls.start({
         opacity: 1,
-        transition: { duration: 1.0, ease: 'easeInOut' },
+        transition: { duration: 1.1, ease: [0.4, 0, 0.2, 1] },
       });
 
-      // Fade out the white overlay so image shows through
-      await overlayControls.start({
+      // 2. Fade out the white overlay so image shows through
+      await whiteControls.start({
         opacity: 0,
-        transition: { duration: 0.8, ease: 'easeInOut' },
+        transition: { duration: 0.9, ease: [0.4, 0, 0.2, 1] },
       });
 
-      // Fade in the search bar
+      // 3. Slide-in the search bar
       await searchControls.start({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: 'easeOut' },
+        transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
       });
 
-      // Brief hold, then signal completion
-      setTimeout(onComplete, 600);
-    }, textRevealDone * 1000);
+      // 4. Brief hold → done
+      setTimeout(onComplete, 400);
+    };
 
-    return () => clearTimeout(timer);
-  }, [bgControls, overlayControls, searchControls, onComplete]);
+    run();
+  }, [phase, bgControls, whiteControls, searchControls, onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
-      {/* Hero background image — fades in beneath the white */}
+    <div className="fixed inset-0 z-[100] overflow-hidden">
+      {/* ── Layer 1: Hero background image ── */}
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
@@ -63,73 +106,70 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       >
         <img
           src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1920"
-          alt="Hero"
+          alt=""
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
       </motion.div>
 
-      {/* White overlay — fades out to reveal image */}
+      {/* ── Layer 2: White overlay (starts fully opaque, fades away) ── */}
       <motion.div
         className="absolute inset-0 bg-white"
         initial={{ opacity: 1 }}
-        animate={overlayControls}
+        animate={whiteControls}
       />
 
-      {/* Content — identical layout to hero so text sits in same spot */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center px-6">
+      {/* ── Layer 3: Content — identical layout to hero ── */}
+      <div className="absolute inset-0 flex items-center justify-center px-6">
         <div className="text-center w-full max-w-4xl">
-          {/* Line 1 */}
+
+          {/* Headline — identical font/size/line-height to App.tsx hero h1 */}
           <h1
-            className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-0 font-normal text-black"
+            className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-12 font-normal text-black"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            <span className="block">
-              {LINE1_WORDS.map((word, i) => (
-                <motion.span
-                  key={`l1-${i}`}
-                  className="inline-block mr-[0.28em]"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.3 + i * 0.18,
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
+            {/* Line 1 */}
+            <span className="block min-h-[1.05em]">
+              {typedL1}
+              {/* Cursor only on L1 while still typing L1, and on L2 after */}
+              {phase === 'typing' && typedL2 === '' && (
+                <span
+                  className="inline-block w-[3px] ml-[2px] bg-black"
+                  style={{
+                    height: '0.85em',
+                    verticalAlign: 'middle',
+                    opacity: showCursor ? 1 : 0,
+                    transition: 'opacity 0.05s',
                   }}
-                >
-                  {word}
-                </motion.span>
-              ))}
+                />
+              )}
             </span>
 
             {/* Line 2 */}
-            <span className="block">
-              {LINE2_WORDS.map((word, i) => (
-                <motion.span
-                  key={`l2-${i}`}
-                  className="inline-block mr-[0.28em]"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.3 + (LINE1_WORDS.length + i) * 0.18,
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
+            <span className="block min-h-[1.05em]">
+              {typedL2}
+              {phase === 'typing' && typedL2.length > 0 && (
+                <span
+                  className="inline-block w-[3px] ml-[2px] bg-black"
+                  style={{
+                    height: '0.85em',
+                    verticalAlign: 'middle',
+                    opacity: showCursor ? 1 : 0,
+                    transition: 'opacity 0.05s',
                   }}
-                >
-                  {word}
-                </motion.span>
-              ))}
+                />
+              )}
             </span>
           </h1>
 
-          {/* Search bar — same as hero, appears after bg transition */}
+          {/* Search bar — appears during dissolve, identical to hero */}
           <motion.div
-            className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl mt-12"
+            className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl"
             initial={{ opacity: 0, y: 16 }}
             animate={searchControls}
           >
-            <div className="pl-6 md:pl-8 text-black/50 flex items-center justify-center">
+            <div className="pl-6 md:pl-8 text-black/50 flex items-center">
               <Search className="w-5 h-5 md:w-6 md:h-6" />
             </div>
             <input
