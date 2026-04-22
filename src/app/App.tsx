@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ShoppingBag, ArrowRight, Instagram, Twitter, Youtube, Search } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import Preloader from './components/Preloader';
+import BentoGrid from './components/BentoGrid';
 
 // Premium Animation Constants
 const premiumEase = [0.22, 1, 0.36, 1];
