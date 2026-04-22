@@ -387,8 +387,7 @@ export default function App() {
                     Shop Collection
                   </span>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
               {/* Women */}
               <motion.div
@@ -425,8 +424,7 @@ export default function App() {
                     Shop Collection
                   </span>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
           </div>
         </section>
@@ -511,7 +509,6 @@ export default function App() {
                 CURATED FOR THE ARCHIVE. DEFINED BY THE BOLD.
               </motion.p>
             </div>
-          </div>
         </section>
 
         {/* Testimonials Section — Editorial Horizontal Carousel */}
