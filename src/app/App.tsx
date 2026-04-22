@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Preloader from './components/Preloader';
 
@@ -19,22 +19,34 @@ export default function App() {
         transition={{ duration: 0.8 }}
       >
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
-          <div className="text-2xl tracking-tight" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-            VAULT 26
+      <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent text-white">
+        <div className="px-6 lg:px-12 py-6 flex items-center justify-between">
+          <div className="flex items-center gap-12">
+            <div className="text-3xl tracking-tighter text-[#C1121F]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+              VAULT 26
+            </div>
+            
+            <div className="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-wider uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <a href="#" className="hover:text-white/70 transition-colors">New Arrivals</a>
+              <a href="#" className="hover:text-white/70 transition-colors">Men</a>
+              <a href="#" className="hover:text-white/70 transition-colors">Women</a>
+              <a href="#" className="hover:text-white/70 transition-colors">Collections</a>
+              <a href="#" className="hover:text-white/70 transition-colors">About</a>
+            </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-8" style={{ fontFamily: 'Inter, sans-serif' }}>
-            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">New Arrivals</a>
-            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">Men</a>
-            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">Women</a>
-            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">Collections</a>
-            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">About</a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <ShoppingBag className="w-5 h-5 cursor-pointer hover:text-[#C1121F] transition-colors" />
+          <div className="flex items-center gap-6 text-[11px] font-semibold tracking-wider uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <div className="hidden md:flex items-center gap-2 cursor-pointer hover:text-white/70 transition-colors">
+              <Search className="w-4 h-4" />
+              <span>Search Products</span>
+            </div>
+            <div className="hidden md:flex items-center gap-2 cursor-pointer hover:text-white/70 transition-colors">
+              <span>🇬🇧 United Kingdom</span>
+            </div>
+            <div className="hidden md:flex items-center gap-2 cursor-pointer hover:text-white/70 transition-colors">
+              <ShoppingBag className="w-4 h-4" />
+              <span>Bag (0)</span>
+            </div>
             <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
               {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -43,32 +55,42 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden mt-16">
+      <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1635650805015-2fa50682873a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1920"
             alt="Hero"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
         </div>
 
-        <div className="relative h-full flex items-center justify-center px-6">
+        <div className="relative h-full flex flex-col items-center justify-center px-6 mt-8 md:mt-16">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="text-center z-10"
+            transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
+            className="text-center z-10 w-full max-w-4xl"
           >
             <h1
-              className="text-[10vw] md:text-[12vw] lg:text-[14vw] leading-[0.85] mb-8 text-white mix-blend-difference"
+              className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-12 text-white font-normal"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
-              UNLOCK<br />YOUR STYLE
+              The journey starts here <br /> &amp; changes your style.
             </h1>
-            <button className="bg-[#C1121F] text-white px-12 py-4 text-sm tracking-wider hover:bg-black transition-colors duration-300" style={{ fontFamily: 'Inter, sans-serif' }}>
-              SHOP NOW
-            </button>
+            
+            <div className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl">
+              <div className="pl-6 md:pl-8 text-black/50 flex items-center justify-center">
+                <Search className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+              <input 
+                type="text" 
+                placeholder="SEARCH FOR A PRODUCT, CATEGORY, COLLECTION..." 
+                className="w-full h-full bg-transparent border-none outline-none px-4 md:px-6 text-sm md:text-base text-black placeholder:text-black/40 font-medium uppercase tracking-wide"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              />
+            </div>
           </motion.div>
         </div>
       </section>
