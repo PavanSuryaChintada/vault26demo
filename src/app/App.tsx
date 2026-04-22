@@ -169,19 +169,22 @@ export default function App() {
               className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-12 text-white font-normal"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
-              The journey starts here<br />&amp; changes your style.
+              The journey starts here<br />& changes your style.
             </h1>
             
             <div className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl">
               <div className="pl-6 md:pl-8 text-black/50 flex items-center justify-center">
                 <Search className="w-5 h-5 md:w-6 md:h-6" />
               </div>
-              <input 
-                type="text" 
-                placeholder="SEARCH FOR A PRODUCT, CATEGORY, COLLECTION..." 
-                className="w-full h-full bg-transparent border-none outline-none px-4 md:px-6 text-sm md:text-base text-black placeholder:text-black/40 font-medium uppercase tracking-wide"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+              <input
+                type="text"
+                placeholder="SEARCH FOR AN ITEM"
+                className="w-full h-full bg-transparent border-none outline-none text-sm md:text-base px-6 tracking-widest text-black placeholder:text-black/30 font-light"
+                style={{ fontFamily: 'Jost, sans-serif' }}
               />
+              <button className="h-full bg-[#B11226] text-white px-8 md:px-12 text-[10px] md:text-[12px] font-bold tracking-[0.2em] hover:bg-black transition-colors duration-300">
+                SEARCH
+              </button>
             </div>
           </motion.div>
         </div>
@@ -191,7 +194,6 @@ export default function App() {
       <section id="about" className="py-28 px-6 lg:px-12 bg-white overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-            {/* ATTITUDE — slides in from left with clip reveal */}
             <div className="overflow-hidden">
               <motion.h2
                 initial={{ y: '100%', opacity: 0 }}
@@ -204,7 +206,6 @@ export default function App() {
                 ATTITUDE
               </motion.h2>
             </div>
-            {/* CONFIDENCE — slides in from right with delay */}
             <div className="overflow-hidden">
               <motion.h2
                 initial={{ y: '100%', opacity: 0 }}
@@ -218,7 +219,6 @@ export default function App() {
               </motion.h2>
             </div>
           </div>
-          {/* Expanding red rule */}
           <motion.div
             initial={{ scaleX: 0, originX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -310,7 +310,6 @@ export default function App() {
         </div>
       </section>
 
-
       {/* Editorial Bento Grid — Latest Drops */}
       <div id="new-drops">
         <BentoGrid />
@@ -392,8 +391,6 @@ export default function App() {
       {/* NOT FOR EVERYONE — letter-stagger mega reveal */}
       <section className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto text-center relative">
-
-          {/* Animated red arc — draws itself in */}
           <motion.div
             initial={{ opacity: 0, scale: 0.6 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -416,7 +413,6 @@ export default function App() {
             </svg>
           </motion.div>
 
-          {/* NOT FOR — each letter staggers up */}
           <div className="flex justify-center flex-wrap gap-x-6 mb-2 overflow-hidden">
             {'NOT FOR'.split('').map((char, i) => (
               <div key={i} className="overflow-hidden" style={{ display: 'inline-block' }}>
@@ -424,11 +420,7 @@ export default function App() {
                   initial={{ y: '110%' }}
                   whileInView={{ y: '0%' }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{
-                    duration: 1.0,
-                    delay: i * 0.04,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
+                  transition={{ duration: 1.0, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-[12vw] md:text-[10vw] lg:text-[8vw] leading-[0.9] tracking-tight relative z-10"
                   style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                 >
@@ -438,7 +430,6 @@ export default function App() {
             ))}
           </div>
 
-          {/* EVERYONE — italic, delayed */}
           <div className="overflow-hidden">
             <motion.span
               initial={{ y: '110%' }}
@@ -452,7 +443,6 @@ export default function App() {
             </motion.span>
           </div>
 
-          {/* Expanding red line */}
           <motion.div
             initial={{ scaleX: 0, originX: 0.5 }}
             whileInView={{ scaleX: 1 }}
@@ -568,39 +558,39 @@ export default function App() {
               >
                 VAULT <span className="text-[#B11226]">26</span>
               </h4>
-              <p className="text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-sm text-gray-600" style={{ fontFamily: 'Jost, sans-serif' }}>
                 Premium streetwear for those who dare to be different.
               </p>
             </div>
             <div>
-              <h4 className="mb-4 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>Shop</h4>
-              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">New Arrivals</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Men</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Women</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Accessories</a></li>
+              <h4 className="mb-4 text-sm uppercase tracking-widest" style={{ fontFamily: 'Jost, sans-serif' }}>Shop</h4>
+              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Jost, sans-serif' }}>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">New Arrivals</a></li>
+                <li><a href="#men" className="hover:text-[#B11226] transition-colors">Men</a></li>
+                <li><a href="#women" className="hover:text-[#B11226] transition-colors">Women</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">Accessories</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="mb-4 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>Support</h4>
-              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Shipping</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Returns</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">FAQ</a></li>
+              <h4 className="mb-4 text-sm uppercase tracking-widest" style={{ fontFamily: 'Jost, sans-serif' }}>Support</h4>
+              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Jost, sans-serif' }}>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">Shipping</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">Returns</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="mb-4 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>Follow</h4>
-              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">TikTok</a></li>
-                <li><a href="#" className="hover:text-[#C1121F] transition-colors">YouTube</a></li>
+              <h4 className="mb-4 text-sm uppercase tracking-widest" style={{ fontFamily: 'Jost, sans-serif' }}>Follow</h4>
+              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Jost, sans-serif' }}>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">Instagram</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">Twitter</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">TikTok</a></li>
+                <li><a href="#" className="hover:text-[#B11226] transition-colors">YouTube</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-black/10 pt-8 text-center text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="border-t border-black/10 pt-8 text-center text-[10px] tracking-widest uppercase text-gray-400" style={{ fontFamily: 'Jost, sans-serif' }}>
             © 2026 Vault 26. All rights reserved.
           </div>
         </div>
