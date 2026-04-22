@@ -59,9 +59,9 @@ export default function App() {
         <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent text-white">
           <div className="px-6 lg:px-12 py-6 flex items-center justify-between">
             <div className="flex items-center gap-12">
-              <div className="text-3xl tracking-tighter text-[#C1121F]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-                VAULT 26
-              </div>
+              <a href="#" className="flex items-center">
+                <img src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" alt="Vault 26" className="h-12 md:h-16 w-auto object-contain" />
+              </a>
               
               <div className="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-wider uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
                 {['New Arrivals', 'Men', 'Women', 'Collections', 'About'].map((item, i) => (
@@ -370,22 +370,40 @@ export default function App() {
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
+                  transition={{ duration: 2.5, ease: premiumEase }}
                 />
               </svg>
             </div>
 
-            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative z-10">
+            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative z-10 flex flex-col items-center">
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, scale: 1.05, y: 20 },
+                  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.5, ease: premiumEase } }
+                }} 
+                className="mb-12"
+              >
+                <img src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" alt="Vault 26 Logo" className="h-24 md:h-32 w-auto object-contain" />
+              </motion.div>
+
               <div className="overflow-hidden mb-8">
                 <motion.h2 variants={textReveal} className="text-[12vw] lg:text-[9vw] leading-[0.9] tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
                   NOT FOR<br />EVERYONE
                 </motion.h2>
               </div>
-              <motion.div variants={fadeUp} className="inline-block mb-10">
-                <div className="w-32 h-[4px] bg-[#C1121F] mx-auto"></div>
+              
+              <motion.div 
+                variants={{
+                  hidden: { scaleX: 0, opacity: 0 },
+                  visible: { scaleX: 1, opacity: 1, transition: { duration: 1.5, ease: premiumEase } }
+                }} 
+                className="mb-10 origin-center"
+              >
+                <div className="w-32 h-[3px] bg-[#C1121F] mx-auto"></div>
               </motion.div>
+              
               <div className="overflow-hidden">
-                <motion.p variants={textReveal} className="text-xl md:text-2xl max-w-2xl mx-auto text-black" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <motion.p variants={textReveal} className="text-sm md:text-base max-w-2xl mx-auto text-gray-500 tracking-[0.3em] uppercase font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
                   For those who dare to stand out
                 </motion.p>
               </div>
@@ -516,7 +534,7 @@ export default function App() {
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
               <div className="lg:col-span-2">
-                <h4 className="mb-6 text-3xl tracking-widest text-[#C1121F]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>VAULT 26</h4>
+                <img src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" alt="Vault 26" className="h-16 md:h-20 w-auto object-contain mb-6" />
                 <p className="text-xs text-gray-400 max-w-sm mb-8 leading-relaxed font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Premium streetwear crafted with uncompromising attention to detail. Defying convention since 2026.
                 </p>
