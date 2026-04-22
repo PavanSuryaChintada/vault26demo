@@ -1,12 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import Preloader from './components/Preloader';
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className="w-full bg-white text-black overflow-x-hidden">
+      <AnimatePresence>
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loading ? 0 : 1 }}
+        transition={{ duration: 0.8 }}
+      >
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
@@ -375,6 +386,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      </motion.div>
     </div>
   );
 }
