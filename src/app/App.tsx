@@ -24,11 +24,11 @@ export default function App() {
             </div>
             
             <div className="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-wider uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
-              <a href="#" className="hover:text-white/70 transition-colors">New Arrivals</a>
-              <a href="#" className="hover:text-white/70 transition-colors">Men</a>
-              <a href="#" className="hover:text-white/70 transition-colors">Women</a>
-              <a href="#" className="hover:text-white/70 transition-colors">Collections</a>
-              <a href="#" className="hover:text-white/70 transition-colors">About</a>
+              <a href="#new-drops" className="hover:text-white/70 transition-colors">New Drops</a>
+              <a href="#men" className="hover:text-white/70 transition-colors">Men</a>
+              <a href="#women" className="hover:text-white/70 transition-colors">Women</a>
+              <a href="#lookbook" className="hover:text-white/70 transition-colors">Lookbook</a>
+              <a href="#about" className="hover:text-white/70 transition-colors">About</a>
             </div>
           </div>
 
@@ -92,8 +92,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Typography Break Section */}
-      <section className="py-32 px-6 lg:px-12 bg-white">
+      {/* Typography Break Section — About */}
+      <section id="about" className="py-32 px-6 lg:px-12 bg-white">
         <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -174,12 +174,15 @@ export default function App() {
 
 
       {/* Editorial Bento Grid — Latest Drops */}
-      <BentoGrid />
+      <div id="new-drops">
+        <BentoGrid />
+      </div>
 
       {/* Category Section */}
       <section className="py-20 px-6 lg:px-12 bg-white">
         <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div
+            id="men"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -201,6 +204,7 @@ export default function App() {
           </motion.div>
 
           <motion.div
+            id="women"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -257,7 +261,7 @@ export default function App() {
       </section>
 
       {/* Lookbook Style Section */}
-      <section className="py-20 px-6 lg:px-12 bg-white">
+      <section id="lookbook" className="py-20 px-6 lg:px-12 bg-white">
         <div className="max-w-[1600px] mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
