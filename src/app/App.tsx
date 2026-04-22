@@ -385,25 +385,17 @@ export default function App() {
         <section className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
           <div className="max-w-[1600px] mx-auto text-center relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+              whileInView={{ opacity: 0.04, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-8 pointer-events-none"
+              transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] pointer-events-none"
             >
-              <svg viewBox="0 0 200 200" className="w-full h-full">
-                <motion.path
-                  d="M 10 100 Q 50 10, 100 50 T 190 100"
-                  stroke="#B11226"
-                  strokeWidth="40"
-                  fill="none"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.08 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.6, delay: 0.2, ease: 'easeInOut' }}
-                />
-              </svg>
+              <img 
+                src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" 
+                alt="" 
+                className="w-full h-auto object-contain opacity-20" 
+              />
             </motion.div>
 
             {/* NOT FOR — each letter staggers up */}
@@ -564,22 +556,68 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              className="max-w-2xl mx-auto"
             >
               <p
-                className="text-black/60 max-w-xl mx-auto mb-12 text-sm md:text-base tracking-wide font-light"
+                className="text-black/60 mb-12 text-sm md:text-base tracking-[0.2em] uppercase font-light leading-relaxed"
                 style={{ fontFamily: 'Jost, sans-serif' }}
               >
                 BE THE FIRST TO RECEIVE EXCLUSIVE ACCESS TO LIMITED DROPS, EDITORIAL CONTENT, AND SECRET ARCHIVE RELEASES.
               </p>
 
-              <motion.button
-                whileHover={{ scale: 1.02, backgroundColor: '#000000', color: '#ffffff' }}
-                whileTap={{ scale: 0.98 }}
-                className="border border-black px-16 py-5 text-[12px] tracking-[0.3em] uppercase transition-all duration-500 bg-transparent text-black"
-                style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
-              >
-                Explore Collection
-              </motion.button>
+              {/* Premium Newsletter Input */}
+              <div className="flex flex-col md:flex-row items-center gap-4 mb-12">
+                <div className="relative flex-grow w-full">
+                  <input
+                    type="email"
+                    placeholder="ENTER YOUR EMAIL"
+                    className="w-full bg-transparent border-b border-black/20 py-4 text-[12px] tracking-[0.3em] font-light outline-none focus:border-[#B11226] transition-colors placeholder:text-black/20"
+                    style={{ fontFamily: 'Jost, sans-serif' }}
+                  />
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02, backgroundColor: '#000000', color: '#ffffff' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full md:w-auto border border-black px-12 py-4 text-[11px] tracking-[0.3em] uppercase transition-all duration-500 bg-transparent text-black whitespace-nowrap"
+                  style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
+                >
+                  Join Now
+                </motion.button>
+              </div>
+
+              <div className="flex items-center justify-center gap-8 opacity-40">
+                {['INSTAGRAM', 'TWITTER', 'TIKTOK'].map(social => (
+                  <a key={social} href="#" className="text-[9px] tracking-[0.3em] hover:text-[#B11226] transition-colors">
+                    {social}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Floating Editorial Elements */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute left-[5%] top-[20%] hidden xl:block w-48 h-72 overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" 
+                className="w-full h-full object-cover" 
+                alt="" 
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute right-[8%] bottom-[15%] hidden xl:block w-56 h-80 overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1539109132304-391550218a10?q=80&w=1000&auto=format&fit=crop" 
+                className="w-full h-full object-cover" 
+                alt="" 
+              />
             </motion.div>
           </div>
         </section>
