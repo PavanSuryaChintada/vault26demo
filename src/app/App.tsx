@@ -35,7 +35,7 @@ export default function App() {
           <div className="px-8 lg:px-14 py-7 flex items-center justify-between">
 
             {/* ── Brand ── */}
-            <a href="#" className="flex items-center group h-16">
+            <a href="#" className="flex items-center group h-24">
               <img
                 src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png"
                 alt="VAULT 26"
@@ -676,7 +676,7 @@ export default function App() {
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               <div>
-                <div className="mb-4 h-16">
+                <div className="mb-6 h-24">
                   <img
                     src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png"
                     alt="VAULT 26"
