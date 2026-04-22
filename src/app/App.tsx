@@ -448,8 +448,8 @@ export default function App() {
               initial={{ x: "-30%" }}
               animate={{ x: 0 }}
               transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-              className="whitespace-nowrap text-[20vw] md:text-[15vw] font-bold italic uppercase tracking-tighter flex"
-              style={{ fontFamily: 'Cormorant Garamond, serif' }}
+              className="whitespace-nowrap text-[20vw] md:text-[15vw] font-bold italic uppercase tracking-tighter flex opacity-20"
+              style={{ fontFamily: 'Cormorant Garamond, serif', color: '#B11226' }}
             >
               <span>NOT FOR EVERYONE &nbsp; NOT FOR EVERYONE &nbsp;</span>
               <span>NOT FOR EVERYONE &nbsp; NOT FOR EVERYONE &nbsp;</span>
@@ -457,10 +457,10 @@ export default function App() {
           </div>
 
           {/* Layer 2: Massive '26' Watermark */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none select-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none">
             <h4 
-              className="text-[60vw] leading-none text-black select-none"
-              style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 700, WebkitTextStroke: '1px black', color: 'transparent' }}
+              className="text-[60vw] leading-none select-none"
+              style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 700, WebkitTextStroke: '1px #B11226', color: 'transparent' }}
             >
               26
             </h4>
@@ -490,12 +490,25 @@ export default function App() {
               />
             </motion.div>
 
+              <div className="overflow-hidden mb-6">
+                <motion.h2
+                  initial={{ y: '100%', opacity: 0 }}
+                  whileInView={{ y: '0%', opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[12vw] md:text-[8vw] lg:text-[6vw] leading-none text-black/80 tracking-tighter"
+                  style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
+                >
+                  NOT FOR <span className="italic text-[#B11226]">EVERYONE</span>
+                </motion.h2>
+              </div>
+
               <motion.div
                 initial={{ scaleX: 0, originX: 0.5 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="w-32 h-[1px] bg-black/10 mx-auto mt-12 mb-8"
+                className="w-32 h-[1px] bg-[#B11226]/40 mx-auto mb-8"
               />
 
               <motion.p
@@ -641,7 +654,7 @@ export default function App() {
 
         {/* Redesigned Join the Vault Section */}
         <section className="py-24 md:py-48 px-6 lg:px-12 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 flex flex-col justify-center opacity-[0.03] pointer-events-none select-none">
+          <div className="absolute inset-0 flex flex-col justify-center opacity-[0.05] pointer-events-none select-none">
             <motion.div
               initial={{ x: 0 }}
               animate={{ x: "-50%" }}
@@ -662,6 +675,17 @@ export default function App() {
               <span>VAULT 26 &nbsp; VAULT 26 &nbsp; VAULT 26 &nbsp; VAULT 26 &nbsp;</span>
               <span>VAULT 26 &nbsp; VAULT 26 &nbsp; VAULT 26 &nbsp; VAULT 26 &nbsp;</span>
             </motion.div>
+          </div>
+
+          {/* Decorative Technical Accents */}
+          <div className="absolute top-12 left-12 text-[9px] tracking-[0.4em] uppercase text-black/20 font-medium hidden md:block" style={{ fontFamily: 'Jost, sans-serif' }}>
+            SUB_PORTAL: V26_COMMUNITY // EST. 2026
+          </div>
+          <div className="absolute top-12 right-12 text-[9px] tracking-[0.4em] uppercase text-black/20 font-medium hidden md:block" style={{ fontFamily: 'Jost, sans-serif' }}>
+            LAT: 51.5074° N // LNG: 0.1278° W
+          </div>
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.5em] uppercase text-[#B11226]/40 font-bold hidden md:block">
+            AUTHENTIC ARCHIVE ACCESS
           </div>
 
           <div className="max-w-[1600px] mx-auto text-center relative z-10">
@@ -710,7 +734,7 @@ export default function App() {
                   <input
                     type="email"
                     placeholder="ENTER YOUR EMAIL"
-                    className="w-full bg-transparent border-b border-black/20 py-4 text-[12px] tracking-[0.3em] font-light outline-none focus:border-[#B11226] transition-colors placeholder:text-black/20"
+                    className="w-full bg-transparent border-b border-black/20 py-4 text-[12px] tracking-[0.3em] font-light outline-none focus:border-[#B11226] transition-colors placeholder:text-black/60"
                     style={{ fontFamily: 'Jost, sans-serif' }}
                   />
                 </div>
