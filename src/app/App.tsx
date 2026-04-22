@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag, ArrowRight, Instagram, Twitter, Youtube } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Menu, X, ShoppingBag, ArrowRight, Instagram, Twitter, Youtube, Search } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import Preloader from './components/Preloader';
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
