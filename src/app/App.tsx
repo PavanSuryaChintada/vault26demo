@@ -26,10 +26,10 @@ export default function App() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? 'rgba(255,255,255,0.08)' : 'transparent',
+          background: scrolled ? 'rgba(255,255,255,0.85)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.12)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : '1px solid transparent',
         }}
       >
         <div className="px-8 lg:px-14 py-7 flex items-center justify-between">
@@ -37,7 +37,7 @@ export default function App() {
           {/* ── Brand ── */}
           <a href="#" className="flex items-baseline gap-1 group">
             <span
-              className="text-[28px] lg:text-[32px] font-light tracking-[0.08em] text-white leading-none"
+              className={`text-[28px] lg:text-[32px] font-light tracking-[0.08em] leading-none transition-colors duration-500 ${scrolled ? 'text-black' : 'text-white'}`}
               style={{ fontFamily: 'Cormorant Garamond, serif' }}
             >
               VAULT
@@ -65,7 +65,7 @@ export default function App() {
               <a
                 key={label}
                 href={href}
-                className="relative text-[11px] font-light tracking-[0.28em] uppercase text-white/80 hover:text-white transition-colors duration-300 group py-1"
+                className={`relative text-[11px] font-light tracking-[0.28em] uppercase transition-colors duration-300 group py-1 ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/80 hover:text-white'}`}
               >
                 {label}
                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#B11226] group-hover:w-full transition-all duration-400" />
@@ -76,7 +76,7 @@ export default function App() {
           {/* ── Right utilities ── */}
           <div className="flex items-center gap-6">
             <button
-              className="hidden md:flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group"
+              className={`hidden md:flex items-center gap-2 transition-colors duration-300 group ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
               aria-label="Search"
             >
               <Search className="w-[17px] h-[17px]" strokeWidth={1.5} />
@@ -88,10 +88,10 @@ export default function App() {
               </span>
             </button>
 
-            <div className="hidden md:block w-[1px] h-4 bg-white/20" />
+            <div className={`hidden md:block w-[1px] h-4 transition-colors duration-500 ${scrolled ? 'bg-black/20' : 'bg-white/20'}`} />
 
             <button
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+              className={`flex items-center gap-2 transition-colors duration-300 ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
               aria-label="Bag"
             >
               <ShoppingBag className="w-[17px] h-[17px]" strokeWidth={1.5} />
@@ -105,7 +105,7 @@ export default function App() {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden text-white/70 hover:text-white transition-colors"
+              className={`lg:hidden transition-colors ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
             >
               {menuOpen ? <X className="w-5 h-5" strokeWidth={1.5} /> : <Menu className="w-5 h-5" strokeWidth={1.5} />}
             </button>
