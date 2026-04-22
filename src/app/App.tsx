@@ -1,0 +1,380 @@
+import { useState, useEffect } from 'react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
+import { motion } from 'motion/react';
+
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <div className="w-full bg-white text-black overflow-x-hidden">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+          <div className="text-2xl tracking-tight" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+            VAULT 26
+          </div>
+
+          <div className="hidden md:flex items-center gap-8" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">New Arrivals</a>
+            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">Men</a>
+            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">Women</a>
+            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">Collections</a>
+            <a href="#" className="text-sm hover:text-[#C1121F] transition-colors">About</a>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <ShoppingBag className="w-5 h-5 cursor-pointer hover:text-[#C1121F] transition-colors" />
+            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative h-screen w-full overflow-hidden mt-16">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1635650805015-2fa50682873a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
+
+        <div className="relative h-full flex items-center justify-center px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="text-center z-10"
+          >
+            <h1
+              className="text-[10vw] md:text-[12vw] lg:text-[14vw] leading-[0.85] mb-8 text-white mix-blend-difference"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
+              UNLOCK<br />YOUR STYLE
+            </h1>
+            <button className="bg-[#C1121F] text-white px-12 py-4 text-sm tracking-wider hover:bg-black transition-colors duration-300" style={{ fontFamily: 'Inter, sans-serif' }}>
+              SHOP NOW
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Typography Break Section */}
+      <section className="py-32 px-6 lg:px-12 bg-white">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2
+                className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                ATTITUDE
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h2
+                className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight text-right"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                CONFIDENCE
+              </h2>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial Split Section */}
+      <section className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden group"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1637536701306-3214e9cec64a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Editorial"
+                className="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <div className="inline-block">
+                <span className="text-[#C1121F] text-8xl" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>26</span>
+              </div>
+              <h3
+                className="text-6xl lg:text-7xl leading-[0.9]"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                Redefining<br />Street Culture
+              </h3>
+              <div className="w-20 h-1 bg-[#C1121F]"></div>
+              <p className="text-lg leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Where high fashion meets street authenticity. Vault 26 is more than clothing—it's a statement of individuality and fearless self-expression.
+              </p>
+              <button className="border-2 border-black px-10 py-3 text-sm tracking-wider hover:bg-black hover:text-white transition-all duration-300" style={{ fontFamily: 'Inter, sans-serif' }}>
+                DISCOVER MORE
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Creative Product Grid */}
+      <section className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-[1600px] mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-7xl lg:text-9xl mb-16 tracking-tight"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            Latest Drops
+          </motion.h2>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {[
+              { img: 'https://images.unsplash.com/photo-1635650804263-1a1941e14df5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Oversized Hoodie', price: '$120' },
+              { img: 'https://images.unsplash.com/photo-1576790807856-b9205fb5703f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw4fHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Cargo Pants', price: '$95' },
+              { img: 'https://images.unsplash.com/photo-1652110959665-81bdbb478489?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Graphic Tee', price: '$65' },
+              { img: 'https://images.unsplash.com/photo-1560257437-628e0fcabc94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Bomber Jacket', price: '$185' },
+              { img: 'https://images.unsplash.com/photo-1635650804060-bb009bcb2ea5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw3fHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Statement Sneakers', price: '$140' },
+              { img: 'https://images.unsplash.com/photo-1559038295-f32f4d5bb27c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Leather Jacket', price: '$280' },
+              { img: 'https://images.unsplash.com/photo-1635650805000-f31dee3133bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Utility Vest', price: '$110' },
+              { img: 'https://images.unsplash.com/photo-1635650804483-2a77a8c9e728?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Minimalist Tee', price: '$55' },
+            ].map((product, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group cursor-pointer"
+              >
+                <div className="relative overflow-hidden mb-3">
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className="w-full h-[300px] lg:h-[450px] object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                </div>
+                <h4 className="text-sm mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>{product.name}</h4>
+                <p className="text-sm text-[#C1121F]" style={{ fontFamily: 'Inter, sans-serif' }}>{product.price}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Category Section */}
+      <section className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative h-[500px] overflow-hidden group cursor-pointer"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1564628185238-bc6921b4ddb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxMHx8c3RyZWV0d2VhciUyMGZhc2hpb24lMjBtb2RlbCUyMHVyYmFufGVufDF8fHx8MTc3Njc1NzkzNnww&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="Men's Collection"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <h3
+                className="text-white text-7xl lg:text-8xl tracking-tight mix-blend-difference"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                MEN
+              </h3>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative h-[500px] overflow-hidden group cursor-pointer"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1554235748-40ff2b5d9277?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="Women's Collection"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <h3
+                className="text-white text-7xl lg:text-8xl tracking-tight mix-blend-difference"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                WOMEN
+              </h3>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Graphic Statement Section */}
+      <section className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
+        <div className="max-w-[1600px] mx-auto text-center relative">
+          {/* Red brush stroke accent */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-10">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              <path d="M 10 100 Q 50 10, 100 50 T 190 100" stroke="#C1121F" strokeWidth="40" fill="none" strokeLinecap="round" />
+            </svg>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2
+              className="text-[12vw] md:text-[10vw] lg:text-[8vw] leading-[0.85] tracking-tight mb-6 relative z-10"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
+              NOT FOR<br />EVERYONE
+            </h2>
+            <div className="inline-block">
+              <div className="w-32 h-2 bg-[#C1121F] mx-auto"></div>
+            </div>
+            <p className="text-xl mt-8 max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+              For those who dare to stand out
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lookbook Style Section */}
+      <section className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-[1600px] mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-7xl lg:text-9xl mb-16 tracking-tight"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            Lookbook
+          </motion.h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              'https://images.unsplash.com/photo-1650464595868-fd12e3047d33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+              'https://images.unsplash.com/photo-1637536701374-073adb2ee745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+              'https://images.unsplash.com/photo-1654777673904-d2bbdb3447a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw4fHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+              'https://images.unsplash.com/photo-1652281846249-fd131a6cca36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw3fHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+            ].map((img, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative overflow-hidden group cursor-pointer"
+              >
+                <img
+                  src={img}
+                  alt={`Lookbook ${index + 1}`}
+                  className="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-32 px-6 lg:px-12 bg-black text-white">
+        <div className="max-w-[1600px] mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2
+              className="text-[10vw] md:text-[8vw] lg:text-[6vw] leading-[0.85] mb-12 tracking-tight"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
+              Join the Vault
+            </h2>
+            <button className="bg-[#C1121F] text-white px-16 py-5 text-base tracking-wider hover:bg-white hover:text-black transition-all duration-300" style={{ fontFamily: 'Inter, sans-serif' }}>
+              EXPLORE COLLECTION
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-black/10 py-16 px-6 lg:px-12">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <h4 className="mb-4 text-lg" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>VAULT 26</h4>
+              <p className="text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Premium streetwear for those who dare to be different.
+              </p>
+            </div>
+            <div>
+              <h4 className="mb-4 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>Shop</h4>
+              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">New Arrivals</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Men</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Women</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Accessories</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-4 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>Support</h4>
+              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Shipping</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Returns</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-4 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>Follow</h4>
+              <ul className="space-y-2 text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Instagram</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">Twitter</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">TikTok</a></li>
+                <li><a href="#" className="hover:text-[#C1121F] transition-colors">YouTube</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-black/10 pt-8 text-center text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
+            © 2026 Vault 26. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
