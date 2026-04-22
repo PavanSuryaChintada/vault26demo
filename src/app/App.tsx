@@ -35,7 +35,7 @@ export default function App() {
           <div className="px-8 lg:px-14 py-7 flex items-center justify-between">
 
             {/* ── Brand ── */}
-            <a href="#" className="flex items-center group h-16">
+            <a href="#" className="flex items-center group h-24">
               <img
                 src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png"
                 alt="VAULT 26"
@@ -100,7 +100,7 @@ export default function App() {
                 onClick={() => setMenuOpen(!menuOpen)}
                 className={`lg:hidden transition-colors ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
               >
-                {menuOpen ? <X className="w-5 h-5" strokeWidth={1.5} /> : <Menu className="w-5 h-5" strokeWidth={1.5} />}
+                {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -113,9 +113,9 @@ export default function App() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="lg:hidden overflow-hidden bg-black/60 backdrop-blur-xl border-t border-white/10"
+                className="lg:hidden overflow-hidden bg-white border-t border-black/5 shadow-xl"
               >
-                <div className="px-8 py-8 flex flex-col gap-6">
+                <div className="px-8 py-10 flex flex-col gap-6">
                   {[
                     { label: 'New Drops', href: '#new-drops' },
                     { label: 'Men', href: '#men' },
@@ -127,7 +127,7 @@ export default function App() {
                       key={label}
                       href={href}
                       onClick={() => setMenuOpen(false)}
-                      className="text-[13px] tracking-[0.3em] uppercase font-light text-white/80 hover:text-white hover:pl-2 transition-all duration-300"
+                      className="text-[14px] tracking-[0.3em] uppercase font-light text-black/60 hover:text-black transition-all duration-300"
                       style={{ fontFamily: 'Jost, sans-serif' }}
                     >
                       {label}
@@ -139,47 +139,87 @@ export default function App() {
           </AnimatePresence>
         </nav>
 
-        {/* Hero Section */}
-        <section className="relative h-screen w-full overflow-hidden">
+        {/* Cinematic Editorial Hero Section */}
+        <section className="relative h-screen w-full overflow-hidden bg-black">
+          {/* Layer 1: Background Media with Cinematic Grade */}
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1920"
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=90&w=1920"
               alt="Hero"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center scale-105 opacity-80"
             />
-            <div className="absolute inset-0 bg-black/10"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
           </div>
 
-          <div className="relative h-full flex flex-col items-center justify-center px-6 mt-8 md:mt-16">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
-              className="text-center z-10 w-full max-w-4xl"
+          {/* Layer 2: Massive Brand Watermark */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.07] pointer-events-none select-none">
+            <h2 
+              className="text-[60vw] leading-none text-white select-none"
+              style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, WebkitTextStroke: '2px white', color: 'transparent' }}
             >
-              <h1
-                className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-12 text-white font-normal"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-              >
-                The journey starts here<br />& changes your style.
-              </h1>
+              26
+            </h2>
+          </div>
 
-              <div className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl">
-                <div className="pl-6 md:pl-8 text-black/50 flex items-center justify-center">
-                  <Search className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="SEARCH FOR AN ITEM"
-                  className="w-full h-full bg-transparent border-none outline-none text-sm md:text-base px-6 tracking-widest text-black placeholder:text-black/30 font-light"
+          {/* Layer 3: Main Editorial Content */}
+          <div className="relative h-full flex items-center px-6 lg:px-24">
+            <div className="max-w-5xl">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span 
+                  className="inline-block text-[10px] tracking-[0.5em] uppercase text-white/50 mb-8"
                   style={{ fontFamily: 'Jost, sans-serif' }}
-                />
-                <button className="h-full bg-[#B11226] text-white px-8 md:px-12 text-[10px] md:text-[12px] font-bold tracking-[0.2em] hover:bg-black transition-colors duration-300">
-                  SEARCH
-                </button>
-              </div>
-            </motion.div>
+                >
+                  ESTABLISHED MMXXVI // ARCHIVE 01
+                </span>
+                
+                <h1
+                  className="text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white font-normal mb-12 tracking-tighter"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+                >
+                  BEYOND <br />
+                  <span className="italic ml-8 md:ml-16">TRENDS.</span>
+                </h1>
+
+                {/* Sleek Minimalist Search Bar (Glassmorphic) */}
+                <div className="relative w-full max-w-[500px] flex items-center h-14 bg-white/5 backdrop-blur-xl border border-white/10 group transition-all duration-500 hover:border-white/30">
+                  <div className="pl-6 text-white/40 group-hover:text-[#B11226] transition-colors duration-300">
+                    <Search className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="FIND YOUR PIECE..."
+                    className="w-full h-full bg-transparent border-none outline-none text-[11px] px-4 tracking-[0.2em] text-white placeholder:text-white/20 font-light"
+                    style={{ fontFamily: 'Jost, sans-serif' }}
+                  />
+                  <button className="h-full bg-white text-black px-8 text-[9px] font-bold tracking-[0.2em] hover:bg-[#B11226] hover:text-white transition-all duration-500 uppercase">
+                    EXPLORE
+                  </button>
+                </div>
+
+                <div className="mt-12 flex gap-12 items-center">
+                   <div className="flex -space-x-3">
+                      {[1,2,3].map(i => (
+                        <div key={i} className="w-10 h-10 rounded-full border-2 border-black bg-gray-800 overflow-hidden">
+                          <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="user" className="w-full h-full object-cover" />
+                        </div>
+                      ))}
+                   </div>
+                   <p className="text-[10px] tracking-[0.1em] text-white/40 uppercase font-light" style={{ fontFamily: 'Jost, sans-serif' }}>
+                      JOIN 2K+ COLLECTORS <br /> IN THE ARCHIVE
+                   </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Layer 4: Vertical Scroll Hint */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
+             <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-white"></div>
+             <span className="text-[9px] tracking-[0.4em] uppercase text-white font-light">Scroll</span>
           </div>
         </section>
 
@@ -308,10 +348,9 @@ export default function App() {
           <BentoGrid />
         </div>
 
-        {/* Category Section (H&M Editorial Style) */}
-        <section className="py-24 bg-white">
-          <div className="px-6 lg:px-12 max-w-[1800px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-1">
+        {/* Category Section (High-End Editorial Split) */}
+        <section className="bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-2">
 
               {/* Men */}
               <motion.div
@@ -339,19 +378,17 @@ export default function App() {
                 </div>
                 <div className="mt-5 flex flex-col gap-0.5">
                   <h3
-                    className="text-[13px] tracking-[0.06em] text-black uppercase"
-                    style={{ fontFamily: 'Jost, sans-serif', fontWeight: 500 }}
+                    className="text-white text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
+                    style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                   >
-                    MENSWEAR
+                    Menswear
                   </h3>
-                  <div
-                    className="text-[13px] tracking-[0.06em] text-black/60 group-hover:text-black transition-colors duration-400 uppercase"
-                    style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
-                  >
-                    → EXPLORE COLLECTION
-                  </div>
+                  <span className="text-white/70 text-xs tracking-[0.4em] uppercase font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    Shop Collection
+                  </span>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
 
               {/* Women */}
               <motion.div
@@ -379,26 +416,67 @@ export default function App() {
                 </div>
                 <div className="mt-5 flex flex-col gap-0.5">
                   <h3
-                    className="text-[13px] tracking-[0.06em] text-black uppercase"
-                    style={{ fontFamily: 'Jost, sans-serif', fontWeight: 500 }}
+                    className="text-white text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
+                    style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                   >
-                    WOMENSWEAR
+                    Womenswear
                   </h3>
-                  <div
-                    className="text-[13px] tracking-[0.06em] text-black/60 group-hover:text-black transition-colors duration-400 uppercase"
-                    style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
-                  >
-                    → EXPLORE COLLECTION
-                  </div>
+                  <span className="text-white/70 text-xs tracking-[0.4em] uppercase font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    Shop Collection
+                  </span>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
 
-            </div>
           </div>
         </section>
 
-        {/* NOT FOR EVERYONE — letter-stagger mega reveal */}
-        <section className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
+        {/* NOT FOR EVERYONE — Graphical Editorial Statement */}
+        <section className="py-64 px-6 lg:px-12 bg-white relative overflow-hidden border-y border-black/5">
+          
+          {/* Layer 1: Multi-Directional Marquees */}
+          <div className="absolute inset-0 flex flex-col justify-around py-20 opacity-[0.015] pointer-events-none select-none">
+            <motion.div 
+              initial={{ x: 0 }}
+              animate={{ x: "-30%" }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              className="whitespace-nowrap text-[15vw] font-bold uppercase tracking-tighter flex"
+              style={{ fontFamily: 'Cormorant Garamond, serif' }}
+            >
+              <span>VAULT 26 &nbsp; ARCHIVE &nbsp; VAULT 26 &nbsp; ARCHIVE &nbsp;</span>
+              <span>VAULT 26 &nbsp; ARCHIVE &nbsp; VAULT 26 &nbsp; ARCHIVE &nbsp;</span>
+            </motion.div>
+            <motion.div 
+              initial={{ x: "-30%" }}
+              animate={{ x: 0 }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+              className="whitespace-nowrap text-[15vw] font-bold italic uppercase tracking-tighter flex"
+              style={{ fontFamily: 'Cormorant Garamond, serif' }}
+            >
+              <span>NOT FOR EVERYONE &nbsp; NOT FOR EVERYONE &nbsp;</span>
+              <span>NOT FOR EVERYONE &nbsp; NOT FOR EVERYONE &nbsp;</span>
+            </motion.div>
+          </div>
+
+          {/* Layer 2: Massive '26' Watermark */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none select-none">
+            <h4 
+              className="text-[60vw] leading-none text-black select-none"
+              style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 700, WebkitTextStroke: '1px black', color: 'transparent' }}
+            >
+              26
+            </h4>
+          </div>
+
+          {/* Layer 3: Technical Brutalist Accents */}
+          <div className="absolute top-12 left-12 text-[10px] tracking-[0.4em] uppercase text-black/30 font-medium vertical-text hidden lg:block" style={{ fontFamily: 'Jost, sans-serif' }}>
+            REF: VAULT_ARCHIVE_2026 // 51.5074° N, 0.1278° W
+          </div>
+          <div className="absolute bottom-12 right-12 text-[10px] tracking-[0.4em] uppercase text-black/30 font-medium text-right hidden lg:block" style={{ fontFamily: 'Jost, sans-serif' }}>
+            LIMITED RELEASE // NOT FOR REPRODUCTION
+          </div>
+
+          {/* Layer 4: Red Artistic Arc */}
           <div className="max-w-[1600px] mx-auto text-center relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
@@ -414,60 +492,110 @@ export default function App() {
               />
             </motion.div>
 
-            {/* NOT FOR — each letter staggers up */}
-            <div className="flex justify-center flex-wrap gap-x-6 mb-2">
-              {'NOT FOR'.split('').map((char, i) => (
-                <div key={i} className="overflow-hidden" style={{ display: 'inline-block' }}>
-                  <motion.span
-                    initial={{ y: '100%', opacity: 0 }}
-                    whileInView={{ y: '0%', opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.8,
-                      delay: i * 0.05,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="block text-[12vw] md:text-[10vw] lg:text-[8vw] leading-[0.9] tracking-tight relative z-10"
-                    style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </motion.span>
-                </div>
-              ))}
-            </div>
-
-            {/* EVERYONE — italic, delayed */}
-            <div className="overflow-hidden">
-              <motion.span
-                initial={{ y: '100%', opacity: 0 }}
-                whileInView={{ y: '0%', opacity: 1 }}
+              <motion.div
+                initial={{ scaleX: 0, originX: 0.5 }}
+                whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[12vw] md:text-[10vw] lg:text-[8vw] leading-[0.9] tracking-tight relative z-10"
-                style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontStyle: 'italic' }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="w-32 h-[1px] bg-black/10 mx-auto mt-12 mb-8"
+              />
+
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+                className="text-base max-w-2xl mx-auto text-black/40 tracking-[0.25em] uppercase font-medium"
+                style={{ fontFamily: 'Jost, sans-serif' }}
               >
-                EVERYONE
-              </motion.span>
+                CURATED FOR THE ARCHIVE. DEFINED BY THE BOLD.
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section — Editorial Horizontal Carousel */}
+        <section className="py-24 px-6 lg:px-12 bg-white overflow-hidden border-b border-black/5">
+          <div className="max-w-[1600px] mx-auto">
+            <div className="flex items-end justify-between mb-12">
+              <div className="overflow-hidden">
+                <motion.h2 
+                  initial={{ y: '100%' }}
+                  whileInView={{ y: '0%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="text-3xl tracking-tight"
+                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                >
+                  Voices of the <span className="italic">Archive</span>
+                </motion.h2>
+              </div>
+              <div className="hidden md:block text-[9px] tracking-[0.4em] uppercase text-black/30 font-medium">
+                Scroll to Explore →
+              </div>
             </div>
 
-            <motion.div
-              initial={{ scaleX: 0, originX: 0.5 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.0, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="w-24 h-[2px] bg-[#B11226] mx-auto mt-8 mb-6"
-            />
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.85 }}
-              className="text-base max-w-2xl mx-auto text-black/50 tracking-[0.15em] uppercase"
-              style={{ fontFamily: 'Jost, sans-serif', fontWeight: 300 }}
+            <motion.div 
+              drag="x"
+              dragConstraints={{ right: 0, left: -600 }}
+              className="flex gap-16 cursor-grab active:cursor-grabbing"
             >
-              For those who dare to stand out
-            </motion.p>
+              {[
+                {
+                  quote: "Vault 26 isn't just a brand; it's a curated experience. The quality of the Archive releases is unparalleled.",
+                  author: "Julian R.",
+                  role: "Fashion Consultant"
+                },
+                {
+                  quote: "The intersection of high-fashion tailoring and street authenticity is hard to find. Vault 26 executes it flawlessly.",
+                  author: "Elena M.",
+                  role: "Creative Director"
+                },
+                {
+                  quote: "Every drop tells a story. I don't just wear the pieces; I carry the confidence of the Vault.",
+                  author: "Marcus T.",
+                  role: "Stylist"
+                },
+                {
+                  quote: "A rare blend of brutalist aesthetic and premium comfort. Truly understands the modern silhouette.",
+                  author: "Sophia L.",
+                  role: "Visual Artist"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="min-w-[280px] md:min-w-[450px] flex flex-col"
+                >
+                  <span className="text-[9px] tracking-[0.4em] uppercase text-[#B11226] mb-8 font-medium" style={{ fontFamily: 'Jost, sans-serif' }}>
+                    0{index + 1} // Archive Review
+                  </span>
+                  <p 
+                    className="text-xl md:text-2xl leading-relaxed text-black mb-10 select-none"
+                    style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 400 }}
+                  >
+                    "{item.quote}"
+                  </p>
+                  <div className="mt-auto">
+                    <h4 className="text-[12px] tracking-[0.2em] uppercase font-bold text-black" style={{ fontFamily: 'Jost, sans-serif' }}>
+                      {item.author}
+                    </h4>
+                    <span className="text-[10px] tracking-[0.1em] text-black/40 uppercase" style={{ fontFamily: 'Jost, sans-serif' }}>
+                      {item.role}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+            
+            {/* Carousel Progress Line */}
+            <div className="w-full h-[1px] bg-black/5 mt-16 relative">
+              <motion.div 
+                className="absolute top-0 left-0 h-full bg-[#B11226] w-1/4"
+                initial={{ x: 0 }}
+                whileInView={{ x: '100%' }}
+                transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse' }}
+              />
+            </div>
           </div>
         </section>
 
@@ -514,10 +642,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* Final CTA */}
         {/* Redesigned Join the Vault Section */}
         <section className="py-48 px-6 lg:px-12 bg-white relative overflow-hidden">
-          {/* Animated Marquee Typography Background */}
           <div className="absolute inset-0 flex flex-col justify-center opacity-[0.03] pointer-events-none select-none">
             <motion.div
               initial={{ x: 0 }}
@@ -643,15 +769,15 @@ export default function App() {
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               <div>
-                <div className="mb-4 h-16">
+                <div className="mb-6 h-24">
                   <img
                     src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png"
                     alt="VAULT 26"
                     className="h-full w-auto object-contain brightness-0"
                   />
                 </div>
-                <p className="text-sm text-gray-600" style={{ fontFamily: 'Jost, sans-serif' }}>
-                  Premium streetwear for those who dare to be different.
+                <p className="text-sm text-gray-500 max-w-xs leading-relaxed" style={{ fontFamily: 'Jost, sans-serif' }}>
+                  WHERE HIGH FASHION MEETS STREET AUTHENTICITY. DEFYING CONVENTION SINCE 2026.
                 </p>
               </div>
               <div>
@@ -682,8 +808,18 @@ export default function App() {
                 </ul>
               </div>
             </div>
-            <div className="border-t border-black/10 pt-8 text-center text-[10px] tracking-widest uppercase text-gray-400" style={{ fontFamily: 'Jost, sans-serif' }}>
-              © 2026 Vault 26. All rights reserved.
+
+            {/* Massive Footer Brand Anchor */}
+            <div className="border-t border-black/10 mt-20 pt-24 flex flex-col items-center">
+
+              <div className="flex flex-col md:flex-row justify-between items-center w-full gap-6 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-medium" style={{ fontFamily: 'Jost, sans-serif' }}>
+                <p>© 2026 VAULT 26. ALL RIGHTS RESERVED.</p>
+                <div className="flex gap-8">
+                  <span className="cursor-pointer hover:text-black transition-colors">United Kingdom (GBP £)</span>
+                  <span className="cursor-pointer hover:text-black transition-colors">Privacy Policy</span>
+                  <span className="cursor-pointer hover:text-black transition-colors">Terms of Service</span>
+                </div>
+              </div>
             </div>
           </div>
         </footer>
