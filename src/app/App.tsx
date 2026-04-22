@@ -96,10 +96,9 @@ export default function App() {
                 </span>
               </button>
 
-              {/* Mobile toggle */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className={`lg:hidden p-2 transition-colors ${scrolled ? 'text-black' : 'text-white'}`}
+                className={`lg:hidden transition-colors ${scrolled ? 'text-black/60 hover:text-black' : 'text-white/70 hover:text-white'}`}
               >
                 {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -225,17 +224,17 @@ export default function App() {
         </section>
 
         {/* ATTITUDE / CONFIDENCE — clip-mask reveal from bottom */}
-        <section id="about" className="py-28 px-6 lg:px-12 bg-white overflow-hidden">
+        <section id="about" className="pt-28 pb-10 px-6 lg:px-12 bg-white overflow-hidden">
           <div className="max-w-[1600px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            <div className="flex flex-row items-baseline justify-center gap-6 md:gap-12 flex-wrap">
               <div className="overflow-hidden">
                 <motion.h2
                   initial={{ y: '100%', opacity: 0 }}
                   whileInView={{ y: '0%', opacity: 1 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight"
-                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                  className="text-[10vw] md:text-[7vw] leading-none tracking-tighter"
+                  style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                 >
                   ATTITUDE
                 </motion.h2>
@@ -246,8 +245,8 @@ export default function App() {
                   whileInView={{ y: '0%', opacity: 1 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight text-right"
-                  style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
+                  className="text-[10vw] md:text-[7vw] leading-none tracking-tighter italic"
+                  style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300 }}
                 >
                   CONFIDENCE
                 </motion.h2>
@@ -264,7 +263,7 @@ export default function App() {
         </section>
 
         {/* Editorial Split — staggered word lift */}
-        <section className="py-20 px-6 lg:px-12 bg-white">
+        <section className="pb-20 pt-4 px-6 lg:px-12 bg-white">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -277,7 +276,7 @@ export default function App() {
                 <img
                   src="https://images.unsplash.com/photo-1637536701306-3214e9cec64a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Editorial"
-                  className="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-[600px] object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 />
               </motion.div>
 
@@ -353,29 +352,31 @@ export default function App() {
         <section className="bg-white">
           <div className="grid grid-cols-1 md:grid-cols-2">
 
-            {/* Men */}
-            <motion.div
-              id="men"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2 }}
-              className="group relative h-[80vh] md:h-screen overflow-hidden cursor-pointer"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=1200"
-                alt="Menswear"
-                className="w-full h-full object-cover grayscale transition-all duration-[2s] ease-out group-hover:scale-110 group-hover:grayscale-0"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <motion.span
-                  className="absolute text-[25vw] font-light text-white opacity-[0.03] uppercase tracking-tighter"
-                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
-                >
-                  MEN
-                </motion.span>
-                <div className="relative z-10 text-center">
+              {/* Men */}
+              <motion.div
+                id="men"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="group cursor-pointer flex flex-col"
+              >
+                <div className="relative overflow-hidden w-full h-[600px] lg:h-[850px] bg-[#f5f5f5]">
+                  <img
+                    src="https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=1000&auto=format&fit=crop"
+                    alt="Menswear"
+                    className="w-full h-full object-cover grayscale transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <h3 
+                      className="text-[15vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
+                      style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                    >
+                      MEN
+                    </h3>
+                  </div>
+                </div>
+                <div className="mt-5 flex flex-col gap-0.5">
                   <h3
                     className="text-white text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
                     style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
@@ -389,29 +390,31 @@ export default function App() {
               </div>
             </motion.div>
 
-            {/* Women */}
-            <motion.div
-              id="women"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.2 }}
-              className="group relative h-[80vh] md:h-screen overflow-hidden cursor-pointer"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&q=80&w=1200"
-                alt="Womenswear"
-                className="w-full h-full object-cover grayscale transition-all duration-[2s] ease-out group-hover:scale-110 group-hover:grayscale-0"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <motion.span
-                  className="absolute text-[25vw] font-light text-white opacity-[0.03] uppercase tracking-tighter"
-                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
-                >
-                  WOMEN
-                </motion.span>
-                <div className="relative z-10 text-center">
+              {/* Women */}
+              <motion.div
+                id="women"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group cursor-pointer flex flex-col"
+              >
+                <div className="relative overflow-hidden w-full h-[600px] lg:h-[850px] bg-[#f5f5f5]">
+                  <img
+                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
+                    alt="Womenswear"
+                    className="w-full h-full object-cover grayscale transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <h3 
+                      className="text-[15vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
+                      style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                    >
+                      WOMEN
+                    </h3>
+                  </div>
+                </div>
+                <div className="mt-5 flex flex-col gap-0.5">
                   <h3
                     className="text-white text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
                     style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
@@ -476,62 +479,18 @@ export default function App() {
           {/* Layer 4: Red Artistic Arc */}
           <div className="max-w-[1600px] mx-auto text-center relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+              whileInView={{ opacity: 0.04, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
+              transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] pointer-events-none"
             >
-              <svg viewBox="0 0 200 200" className="w-full h-full opacity-[0.15]">
-                <motion.path
-                  d="M 10 100 Q 50 10, 100 50 T 190 100"
-                  stroke="#B11226"
-                  strokeWidth="25"
-                  fill="none"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 2, delay: 0.4, ease: 'easeInOut' }}
-                />
-              </svg>
+              <img 
+                src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" 
+                alt="" 
+                className="w-full h-auto object-contain opacity-20" 
+              />
             </motion.div>
-
-            {/* Main Content */}
-            <div className="relative z-10">
-              <div className="flex justify-center flex-wrap gap-x-6 mb-2">
-                {'NOT FOR'.split('').map((char, i) => (
-                  <div key={i} className="overflow-hidden" style={{ display: 'inline-block' }}>
-                    <motion.span
-                      initial={{ y: '100%', opacity: 0 }}
-                      whileInView={{ y: '0%', opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 1.1,
-                        delay: i * 0.05,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      className="block text-[12vw] md:text-[10vw] lg:text-[8.5vw] leading-[0.9] tracking-tight text-black font-semibold"
-                      style={{ fontFamily: 'Cormorant Garamond, serif' }}
-                    >
-                      {char === ' ' ? '\u00A0' : char}
-                    </motion.span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="overflow-hidden">
-                <motion.span
-                  initial={{ y: '100%', opacity: 0 }}
-                  whileInView={{ y: '0%', opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-[12vw] md:text-[10vw] lg:text-[8.5vw] leading-[0.9] tracking-tight text-[#B11226] font-semibold italic"
-                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
-                >
-                  EVERYONE
-                </motion.span>
-              </div>
 
               <motion.div
                 initial={{ scaleX: 0, originX: 0.5 }}
@@ -658,10 +617,10 @@ export default function App() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                'https://images.unsplash.com/photo-1650464595868-fd12e3047d33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
-                'https://images.unsplash.com/photo-1637536701374-073adb2ee745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
-                'https://images.unsplash.com/photo-1654777673904-d2bbdb3447a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw4fHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
-                'https://images.unsplash.com/photo-1652281846249-fd131a6cca36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw3fHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzY3OTY0ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+                'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1537832816519-689ad163238b?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?q=80&w=1000&auto=format&fit=crop',
               ].map((img, index) => (
                 <motion.div
                   key={index}
@@ -674,7 +633,7 @@ export default function App() {
                   <img
                     src={img}
                     alt={`Lookbook ${index + 1}`}
-                    className="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[400px] md:h-[600px] object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
                 </motion.div>
@@ -715,8 +674,8 @@ export default function App() {
                 whileInView={{ y: '0%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[10vw] md:text-[8vw] lg:text-[6vw] leading-none text-black"
-                style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
+                className="block text-[8vw] md:text-[6vw] lg:text-[5vw] leading-tight text-black uppercase tracking-widest"
+                style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 400 }}
               >
                 Join the
               </motion.span>
@@ -727,7 +686,7 @@ export default function App() {
                 whileInView={{ y: '0%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[10vw] md:text-[8vw] lg:text-[6vw] leading-none italic text-[#B11226]"
+                className="block text-[12vw] md:text-[10vw] lg:text-[8vw] leading-none italic text-[#B11226] -mt-4"
                 style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
               >
                 Vault
@@ -739,22 +698,68 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              className="max-w-2xl mx-auto"
             >
               <p
-                className="text-black/60 max-w-xl mx-auto mb-12 text-sm md:text-base tracking-wide font-light"
+                className="text-black/60 mb-12 text-sm md:text-base tracking-[0.2em] uppercase font-light leading-relaxed"
                 style={{ fontFamily: 'Jost, sans-serif' }}
               >
                 BE THE FIRST TO RECEIVE EXCLUSIVE ACCESS TO LIMITED DROPS, EDITORIAL CONTENT, AND SECRET ARCHIVE RELEASES.
               </p>
 
-              <motion.button
-                whileHover={{ scale: 1.02, backgroundColor: '#000000', color: '#ffffff' }}
-                whileTap={{ scale: 0.98 }}
-                className="border border-black px-16 py-5 text-[12px] tracking-[0.3em] uppercase transition-all duration-500 bg-transparent text-black"
-                style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
-              >
-                Explore Collection
-              </motion.button>
+              {/* Premium Newsletter Input */}
+              <div className="flex flex-col md:flex-row items-center gap-4 mb-12">
+                <div className="relative flex-grow w-full">
+                  <input
+                    type="email"
+                    placeholder="ENTER YOUR EMAIL"
+                    className="w-full bg-transparent border-b border-black/20 py-4 text-[12px] tracking-[0.3em] font-light outline-none focus:border-[#B11226] transition-colors placeholder:text-black/20"
+                    style={{ fontFamily: 'Jost, sans-serif' }}
+                  />
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02, backgroundColor: '#000000', color: '#ffffff' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full md:w-auto border border-black px-12 py-4 text-[11px] tracking-[0.3em] uppercase transition-all duration-500 bg-transparent text-black whitespace-nowrap"
+                  style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
+                >
+                  Join Now
+                </motion.button>
+              </div>
+
+              <div className="flex items-center justify-center gap-8 opacity-40">
+                {['INSTAGRAM', 'TWITTER', 'TIKTOK'].map(social => (
+                  <a key={social} href="#" className="text-[9px] tracking-[0.3em] hover:text-[#B11226] transition-colors">
+                    {social}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Floating Editorial Elements */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute left-[5%] top-[20%] hidden xl:block w-48 h-72 overflow-hidden shadow-2xl group"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" 
+                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" 
+                alt="" 
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute right-[8%] bottom-[15%] hidden xl:block w-56 h-80 overflow-hidden shadow-2xl group"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop" 
+                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" 
+                alt="" 
+              />
             </motion.div>
           </div>
         </section>

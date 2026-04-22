@@ -68,7 +68,7 @@ function EditorialCard({
         <img
           src={product.img}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+          className="w-full h-full object-cover grayscale transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] group-hover:grayscale-0"
         />
 
         {/* Feather-thin red top line on hover */}
