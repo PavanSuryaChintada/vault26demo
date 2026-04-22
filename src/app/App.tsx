@@ -376,19 +376,18 @@ export default function App() {
                     </h3>
                   </div>
                 </div>
-                <div className="mt-5 flex flex-col gap-0.5">
+                <div className="mt-5 flex flex-col gap-0.5 px-6 pb-12">
                   <h3
-                    className="text-white text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
+                    className="text-black text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
                     style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                   >
                     Menswear
                   </h3>
-                  <span className="text-white/70 text-xs tracking-[0.4em] uppercase font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <span className="text-black/60 text-xs tracking-[0.4em] uppercase font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                     Shop Collection
                   </span>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
               {/* Women */}
               <motion.div
@@ -414,19 +413,18 @@ export default function App() {
                     </h3>
                   </div>
                 </div>
-                <div className="mt-5 flex flex-col gap-0.5">
+                <div className="mt-5 flex flex-col gap-0.5 px-6 pb-12">
                   <h3
-                    className="text-white text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
+                    className="text-black text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4"
                     style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                   >
                     Womenswear
                   </h3>
-                  <span className="text-white/70 text-xs tracking-[0.4em] uppercase font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <span className="text-black/60 text-xs tracking-[0.4em] uppercase font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                     Shop Collection
                   </span>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
           </div>
         </section>
@@ -511,8 +509,7 @@ export default function App() {
                 CURATED FOR THE ARCHIVE. DEFINED BY THE BOLD.
               </motion.p>
             </div>
-          </div>
-        </section>
+          </section>
 
         {/* Testimonials Section — Editorial Horizontal Carousel */}
         <section className="py-24 px-6 lg:px-12 bg-white overflow-hidden border-b border-black/5">
