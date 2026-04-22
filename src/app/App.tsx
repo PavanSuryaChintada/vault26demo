@@ -473,10 +473,10 @@ export default function App() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                'https://images.unsplash.com/photo-1650464595868-fd12e3047d33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-                'https://images.unsplash.com/photo-1637536701374-073adb2ee745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-                'https://images.unsplash.com/photo-1654777673904-d2bbdb3447a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-                'https://images.unsplash.com/photo-1652281846249-fd131a6cca36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1537832816519-689ad163238b?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?q=80&w=1000&auto=format&fit=crop',
               ].map((img, index) => (
                 <motion.div
                   key={index}
@@ -599,11 +599,11 @@ export default function App() {
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-[5%] top-[20%] hidden xl:block w-48 h-72 overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+              className="absolute left-[5%] top-[20%] hidden xl:block w-48 h-72 overflow-hidden shadow-2xl group"
             >
               <img 
                 src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" 
-                className="w-full h-full object-cover" 
+                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" 
                 alt="" 
               />
             </motion.div>
@@ -611,11 +611,11 @@ export default function App() {
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute right-[8%] bottom-[15%] hidden xl:block w-56 h-80 overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+              className="absolute right-[8%] bottom-[15%] hidden xl:block w-56 h-80 overflow-hidden shadow-2xl group"
             >
               <img 
-                src="https://images.unsplash.com/photo-1539109132304-391550218a10?q=80&w=1000&auto=format&fit=crop" 
-                className="w-full h-full object-cover" 
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop" 
+                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" 
                 alt="" 
               />
             </motion.div>
