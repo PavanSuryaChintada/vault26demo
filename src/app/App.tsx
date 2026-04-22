@@ -32,21 +32,6 @@ export default function App() {
           borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : '1px solid transparent',
         }}
       >
-<<<<<<< HEAD
-        {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent text-white">
-          <div className="px-6 lg:px-12 py-6 flex items-center justify-between">
-            <div className="flex items-center gap-12">
-              <a href="#" className="flex items-center">
-                <img src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" alt="Vault 26" className="h-12 md:h-16 w-auto object-contain" />
-              </a>
-              
-              <div className="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-wider uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
-                {['New Arrivals', 'Men', 'Women', 'Collections', 'About'].map((item, i) => (
-                  <motion.a key={i} whileHover={{ y: -2 }} transition={{ duration: 0.2 }} href="#" className="hover:text-white/70 transition-colors">
-                    {item}
-                  </motion.a>
-=======
         <div className="px-8 lg:px-14 py-7 flex items-center justify-between">
 
           {/* ── Brand ── */}
@@ -154,7 +139,7 @@ export default function App() {
                   >
                     {label}
                   </a>
->>>>>>> e35c84b839302206a243d5afb36bcf5b49d83d71
+
                 ))}
               </div>
             </motion.div>
@@ -206,327 +191,12 @@ export default function App() {
         </div>
       </section>
 
-<<<<<<< HEAD
-          <div className="relative h-full flex flex-col items-center justify-center px-6 pt-16">
-            <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="text-center z-10 max-w-4xl">
-              <div className="overflow-hidden mb-4">
-                <motion.h1 variants={textReveal} className="text-[12vw] md:text-[10vw] lg:text-[9vw] leading-[0.9] text-white tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  ELEVATED
-                </motion.h1>
-              </div>
-              <div className="overflow-hidden mb-8">
-                <motion.h1 variants={textReveal} className="text-[12vw] md:text-[10vw] lg:text-[9vw] leading-[0.9] text-white tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  STREETWEAR
-                </motion.h1>
-              </div>
-              
-              <div className="overflow-hidden mb-12">
-                <motion.p variants={textReveal} className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Premium quality materials. Uncompromising design for those who dare to stand out.
-                </motion.p>
-              </div>
-
-              <motion.button 
-                variants={fadeUp}
-                whileHover={{ scale: 1.02, backgroundColor: '#C1121F', color: '#ffffff', borderColor: '#C1121F' }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="bg-white text-black px-12 py-4 text-sm tracking-widest font-semibold border border-transparent" 
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                SHOP NOW
-              </motion.button>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Typography Break Section */}
-        <section className="py-20 px-6 lg:px-12 bg-white">
-          <div className="max-w-[1600px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 items-center">
-              <div className="overflow-hidden py-2">
-                <motion.h2
-                  variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                  className="text-[14vw] md:text-[8vw] lg:text-[8.5vw] leading-[0.85] tracking-tight"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  ATTITUDE
-                </motion.h2>
-              </div>
-              <div className="overflow-hidden py-2">
-                <motion.h2
-                  variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                  className="text-[14vw] md:text-[8vw] lg:text-[8.5vw] leading-[0.85] tracking-tight text-gray-300"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  CONFIDENCE
-                </motion.h2>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Editorial Split Section (Brand Story) */}
-        <section className="py-16 px-6 lg:px-12 bg-white">
-          <div className="max-w-[1600px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <motion.div
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={imageReveal}
-                className="relative overflow-hidden group h-[600px] lg:h-[800px]"
-              >
-                <motion.img
-                  style={{ y: subtleY }}
-                  src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1080"
-                  alt="Editorial"
-                  className="w-full h-[110%] object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.03] grayscale group-hover:grayscale-0"
-                />
-              </motion.div>
-
-              <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-8">
-                <div className="overflow-hidden">
-                  <motion.div variants={textReveal} className="inline-block">
-                    <span className="text-[#C1121F] text-8xl" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>26</span>
-                  </motion.div>
-                </div>
-                
-                <div className="overflow-hidden">
-                  <motion.h3 variants={textReveal} className="text-5xl lg:text-7xl leading-[0.95] tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    The Intersection<br />of Luxury & Culture
-                  </motion.h3>
-                </div>
-                
-                <motion.div variants={fadeUp} className="w-16 h-[2px] bg-[#C1121F]"></motion.div>
-                
-                <motion.p variants={fadeUp} className="text-lg md:text-xl leading-relaxed text-gray-600 font-light max-w-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Vault 26 was born from the intersection of high fashion and authentic street culture. We believe in clothing as a canvas for individuality, crafting pieces that are as defiant as they are refined.
-                </motion.p>
-                
-                <motion.div variants={fadeUp}>
-                  <motion.button 
-                    whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.97 }}
-                    className="border border-black px-10 py-4 text-sm tracking-widest flex items-center gap-4 hover:bg-black hover:text-white transition-colors duration-300 group" 
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                  >
-                    READ OUR STORY 
-                    <motion.div transition={{ duration: 0.3 }} className="group-hover:translate-x-1">
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.div>
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Collection */}
-        <section className="py-24 px-6 lg:px-12 bg-[#fafafa]">
-          <div className="max-w-[1600px] mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-              <div className="overflow-hidden">
-                <motion.h2
-                  variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                  className="text-5xl lg:text-7xl tracking-tight leading-[0.9]"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  Featured<br />Collection
-                </motion.h2>
-              </div>
-              <motion.a 
-                variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                href="#" className="flex items-center gap-3 text-xs tracking-widest font-semibold hover:text-[#C1121F] transition-colors pb-2 group uppercase" 
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                VIEW ALL 
-                <motion.div transition={{ duration: 0.3 }} className="group-hover:translate-x-1">
-                  <ArrowRight className="w-4 h-4" />
-                </motion.div>
-              </motion.a>
-            </div>
-
-            <motion.div 
-              variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {[
-                { img: 'https://images.unsplash.com/photo-1635650804263-1a1941e14df5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Heavyweight Hoodie', price: '$120' },
-                { img: 'https://images.unsplash.com/photo-1576790807856-b9205fb5703f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw4fHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Tactical Cargo Pants', price: '$145' },
-                { img: 'https://images.unsplash.com/photo-1652110959665-81bdbb478489?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Distressed Graphic Tee', price: '$65' },
-                { img: 'https://images.unsplash.com/photo-1560257437-628e0fcabc94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080', name: 'Nylon Bomber Jacket', price: '$220' },
-              ].map((product, index) => (
-                <motion.div key={index} variants={fadeUp} className="group cursor-pointer flex flex-col">
-                  <div className="relative overflow-hidden mb-4 bg-gray-100 flex-1 aspect-[3/4]">
-                    <img src={product.img} alt={product.name} className="w-full h-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-[1.03]" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
-                      <motion.button whileTap={{ scale: 0.97 }} className="w-full bg-white text-black py-4 text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors shadow-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        QUICK ADD
-                      </motion.button>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-start gap-4 mt-2">
-                    <h4 className="text-sm font-medium tracking-wide leading-snug text-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>{product.name}</h4>
-                    <p className="text-sm font-light text-gray-500 shrink-0" style={{ fontFamily: 'Inter, sans-serif' }}>{product.price}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Category Section */}
-        <section className="py-16 px-6 lg:px-12 bg-white">
-          <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={imageReveal}
-              className="relative h-[500px] lg:h-[700px] overflow-hidden group cursor-pointer"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1564628185238-bc6921b4ddb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxMHx8c3RyZWV0d2VhciUyMGZhc2hpb24lMjBtb2RlbCUyMHVyYmFufGVufDF8fHx8MTc3Njc1NzkzNnww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Men's Collection"
-                className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
-                <h3 className="text-white text-6xl lg:text-8xl tracking-tight drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  MEN
-                </h3>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={imageReveal}
-              className="relative h-[500px] lg:h-[700px] overflow-hidden group cursor-pointer"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1554235748-40ff2b5d9277?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Women's Collection"
-                className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
-                <h3 className="text-white text-6xl lg:text-8xl tracking-tight drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  WOMEN
-                </h3>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Limited Drop / Urgency Section */}
-        <section className="py-24 px-6 lg:px-12 bg-[#0a0a0a] text-white overflow-hidden">
-          <div className="max-w-[1600px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-5 space-y-8">
-                <motion.div variants={fadeUp} className="inline-block px-3 py-1.5 bg-[#C1121F] text-[10px] font-bold tracking-widest uppercase">
-                  LIMITED DROP
-                </motion.div>
-                
-                <div className="overflow-hidden">
-                  <motion.h2 variants={textReveal} className="text-5xl md:text-7xl leading-[0.95] tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    The Obsidian<br />Capsule
-                  </motion.h2>
-                </div>
-
-                <motion.p variants={fadeUp} className="text-gray-400 text-lg font-light leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Only 100 pieces crafted worldwide. Premium Japanese denim meets modern utility.
-                </motion.p>
-                <motion.div variants={fadeUp} className="pt-4 pb-2 border-b border-white/20 inline-block">
-                  <p className="text-xl font-light tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Releasing in: <span className="font-semibold text-white">24:00:00</span>
-                  </p>
-                </motion.div>
-                <motion.div variants={fadeUp}>
-                  <motion.button 
-                    whileHover={{ scale: 1.02, backgroundColor: '#ffffff', color: '#000000' }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.3 }}
-                    className="border border-white/50 px-10 py-4 text-xs font-semibold tracking-widest uppercase mt-4 transition-colors" 
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                  >
-                    GET NOTIFIED
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-
-              <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  'https://images.unsplash.com/photo-1559038295-f32f4d5bb27c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHx1cmJhbiUyMHN0cmVldCUyMHN0eWxlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2Nzk2NDgxfDA&ixlib=rb-4.1.0&q=80&w=1080',
-                  'https://images.unsplash.com/photo-1635650805000-f31dee3133bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHxzdHJlZXR3ZWFyJTIwZmFzaGlvbiUyMG1vZGVsJTIwdXJiYW58ZW58MXx8fHwxNzc2NzU3OTM2fDA&ixlib=rb-4.1.0&q=80&w=1080'
-                ].map((img, i) => (
-                  <motion.div key={i} variants={imageReveal} className="relative h-[400px] lg:h-[600px] overflow-hidden group">
-                    <img src={img} className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03] opacity-80 group-hover:opacity-100" />
-                    <div className="absolute top-4 right-4 bg-white text-black text-[10px] font-bold px-3 py-1.5 tracking-widest uppercase shadow-md">
-                      LOW STOCK
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Graphic Statement Section */}
-        <section className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
-          <div className="max-w-[1600px] mx-auto text-center relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[300px] md:h-[400px] pointer-events-none z-0">
-              <svg viewBox="0 0 300 200" className="w-full h-full">
-                <motion.path 
-                  d="M 20 120 Q 80 20, 150 120 T 280 120" 
-                  stroke="#F9E5E5" 
-                  strokeWidth="50" 
-                  fill="none" 
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 2.5, ease: premiumEase }}
-                />
-              </svg>
-            </div>
-
-            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative z-10 flex flex-col items-center">
-              <motion.div 
-                variants={{
-                  hidden: { opacity: 0, scale: 1.05, y: 20 },
-                  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.5, ease: premiumEase } }
-                }} 
-                className="mb-12"
-              >
-                <img src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" alt="Vault 26 Logo" className="h-24 md:h-32 w-auto object-contain" />
-              </motion.div>
-
-              <div className="overflow-hidden mb-8">
-                <motion.h2 variants={textReveal} className="text-[12vw] lg:text-[9vw] leading-[0.9] tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  NOT FOR<br />EVERYONE
-                </motion.h2>
-              </div>
-              
-              <motion.div 
-                variants={{
-                  hidden: { scaleX: 0, opacity: 0 },
-                  visible: { scaleX: 1, opacity: 1, transition: { duration: 1.5, ease: premiumEase } }
-                }} 
-                className="mb-10 origin-center"
-              >
-                <div className="w-32 h-[3px] bg-[#C1121F] mx-auto"></div>
-              </motion.div>
-              
-              <div className="overflow-hidden">
-                <motion.p variants={textReveal} className="text-sm md:text-base max-w-2xl mx-auto text-gray-500 tracking-[0.3em] uppercase font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  For those who dare to stand out
-                </motion.p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Lookbook Style Section */}
-        <section className="py-20 px-6 lg:px-12 bg-white">
-          <div className="max-w-[1600px] mx-auto">
-            <div className="overflow-hidden mb-12">
-=======
       {/* ATTITUDE / CONFIDENCE — clip-mask reveal from bottom */}
       <section id="about" className="py-28 px-6 lg:px-12 bg-white overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
             <div className="overflow-hidden">
->>>>>>> e35c84b839302206a243d5afb36bcf5b49d83d71
+
               <motion.h2
                 initial={{ y: '100%', opacity: 0 }}
                 whileInView={{ y: '0%', opacity: 1 }}
@@ -593,21 +263,6 @@ export default function App() {
                 </motion.span>
               </div>
 
-<<<<<<< HEAD
-        {/* Footer */}
-        <footer className="bg-[#050505] text-white py-16 px-6 lg:px-12">
-          <div className="max-w-[1600px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-              <div className="lg:col-span-2">
-                <img src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" alt="Vault 26" className="h-16 md:h-20 w-auto object-contain mb-6" />
-                <p className="text-xs text-gray-400 max-w-sm mb-8 leading-relaxed font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Premium streetwear crafted with uncompromising attention to detail. Defying convention since 2026.
-                </p>
-                <div className="flex gap-4">
-                  <motion.a whileHover={{ y: -3, backgroundColor: '#ffffff', color: '#000000' }} transition={{ duration: 0.2 }} href="#" className="w-8 h-8 border border-white/20 flex items-center justify-center rounded-full transition-colors"><Instagram className="w-3 h-3" /></motion.a>
-                  <motion.a whileHover={{ y: -3, backgroundColor: '#ffffff', color: '#000000' }} transition={{ duration: 0.2 }} href="#" className="w-8 h-8 border border-white/20 flex items-center justify-center rounded-full transition-colors"><Twitter className="w-3 h-3" /></motion.a>
-                  <motion.a whileHover={{ y: -3, backgroundColor: '#ffffff', color: '#000000' }} transition={{ duration: 0.2 }} href="#" className="w-8 h-8 border border-white/20 flex items-center justify-center rounded-full transition-colors"><Youtube className="w-3 h-3" /></motion.a>
-=======
               {['Redefining', 'Street Culture'].map((word, i) => (
                 <div key={word} className="overflow-hidden">
                   <motion.h3
@@ -695,7 +350,7 @@ export default function App() {
                   style={{ fontFamily: 'Jost, sans-serif', fontWeight: 400 }}
                 >
                   → EXPLORE COLLECTION
->>>>>>> e35c84b839302206a243d5afb36bcf5b49d83d71
+
                 </div>
               </div>
             </motion.div>
