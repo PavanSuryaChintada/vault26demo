@@ -13,11 +13,7 @@ export default function App() {
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div style={{ visibility: loading ? 'hidden' : 'visible' }}>
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent text-white">
         <div className="px-6 lg:px-12 py-6 flex items-center justify-between">
@@ -77,7 +73,7 @@ export default function App() {
               className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-12 text-white font-normal"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
-              The journey starts here <br /> &amp; changes your style.
+              The journey starts here<br />&amp; changes your style.
             </h1>
             
             <div className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl">
@@ -408,7 +404,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-      </motion.div>
+      </div>
     </div>
   );
 }

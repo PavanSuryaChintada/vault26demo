@@ -1,86 +1,147 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useEffect, useRef } from 'react';
+import { motion, useAnimation, AnimatePresence } from 'motion/react';
+import { Search } from 'lucide-react';
 
-const CAPTIONS = [
-  "Crafted in Silence.",
-  "Where Form Meets Identity.",
-  "Not Just Worn. Remembered.",
-  "Defined by Detail.",
-  "Luxury in Motion.",
-];
+interface PreloaderProps {
+  onComplete: () => void;
+}
 
-export default function Preloader({ onComplete }: { onComplete: () => void }) {
-  const [caption] = useState(() => CAPTIONS[Math.floor(Math.random() * CAPTIONS.length)]);
-  const [isFinished, setIsFinished] = useState(false);
+const LINE1_WORDS = ['The', 'journey', 'starts', 'here'];
+const LINE2_WORDS = ['&', 'changes', 'your', 'style.'];
+const ALL_WORDS = [...LINE1_WORDS, ...LINE2_WORDS];
+
+export default function Preloader({ onComplete }: PreloaderProps) {
+  const bgControls = useAnimation();
+  const overlayControls = useAnimation();
+  const searchControls = useAnimation();
+  const hasStarted = useRef(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFinished(true);
-      setTimeout(onComplete, 800); // Wait for exit animation
-    }, 3500); // Total duration before starting exit
+    if (hasStarted.current) return;
+    hasStarted.current = true;
+
+    const totalWords = ALL_WORDS.length;
+    // Each word takes ~0.18s stagger + 0.5s base duration
+    // Last word finishes around: 0.3 + (totalWords - 1) * 0.18 + 0.5 ≈ 2.1s
+    const textRevealDone = 0.3 + (totalWords - 1) * 0.18 + 0.5 + 0.4; // ~2.5s
+
+    // After text is done, start dissolving in the bg image
+    const timer = setTimeout(async () => {
+      // Fade in the hero background image (overlaid under the white)
+      await bgControls.start({
+        opacity: 1,
+        transition: { duration: 1.0, ease: 'easeInOut' },
+      });
+
+      // Fade out the white overlay so image shows through
+      await overlayControls.start({
+        opacity: 0,
+        transition: { duration: 0.8, ease: 'easeInOut' },
+      });
+
+      // Fade in the search bar
+      await searchControls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: 'easeOut' },
+      });
+
+      // Brief hold, then signal completion
+      setTimeout(onComplete, 600);
+    }, textRevealDone * 1000);
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
-
-  const brandName = "VAULT 26";
-  const letters = brandName.split("");
+  }, [bgControls, overlayControls, searchControls, onComplete]);
 
   return (
-    <AnimatePresence>
-      {!isFinished && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white overflow-hidden"
-        >
-          {/* Noise/Grain Overlay */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-multiply" 
-               style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-          </div>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
+      {/* Hero background image — fades in beneath the white */}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={bgControls}
+      >
+        <img
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1920"
+          alt="Hero"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+      </motion.div>
 
-          <div className="relative flex flex-col items-center">
-            {/* Main Brand Name */}
-            <div className="flex overflow-hidden mb-4">
-              {letters.map((char, index) => (
+      {/* White overlay — fades out to reveal image */}
+      <motion.div
+        className="absolute inset-0 bg-white"
+        initial={{ opacity: 1 }}
+        animate={overlayControls}
+      />
+
+      {/* Content — identical layout to hero so text sits in same spot */}
+      <div className="relative z-10 w-full flex flex-col items-center justify-center px-6">
+        <div className="text-center w-full max-w-4xl">
+          {/* Line 1 */}
+          <h1
+            className="text-[40px] md:text-[64px] lg:text-[76px] leading-[1.05] mb-0 font-normal text-black"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            <span className="block">
+              {LINE1_WORDS.map((word, i) => (
                 <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  key={`l1-${i}`}
+                  className="inline-block mr-[0.28em]"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 1.5,
-                    delay: 0.2 + index * 0.1,
-                    ease: [0.22, 1, 0.36, 1]
+                    delay: 0.3 + i * 0.18,
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="inline-block text-[60px] md:text-[100px] tracking-[0.15em] font-serif leading-none text-black"
-                  style={{ fontFamily: "'Playfair Display', serif", whiteSpace: char === " " ? "pre" : "normal" }}
                 >
-                  {char}
+                  {word}
                 </motion.span>
               ))}
+            </span>
+
+            {/* Line 2 */}
+            <span className="block">
+              {LINE2_WORDS.map((word, i) => (
+                <motion.span
+                  key={`l2-${i}`}
+                  className="inline-block mr-[0.28em]"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: 0.3 + (LINE1_WORDS.length + i) * 0.18,
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>
+          </h1>
+
+          {/* Search bar — same as hero, appears after bg transition */}
+          <motion.div
+            className="relative w-full max-w-[800px] mx-auto bg-white flex items-center h-16 md:h-20 shadow-2xl mt-12"
+            initial={{ opacity: 0, y: 16 }}
+            animate={searchControls}
+          >
+            <div className="pl-6 md:pl-8 text-black/50 flex items-center justify-center">
+              <Search className="w-5 h-5 md:w-6 md:h-6" />
             </div>
-
-            {/* Accent Line */}
-            <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: '60%' }}
-              transition={{ duration: 1.2, delay: 1.5, ease: [0.6, 0.05, -0.01, 0.9] }}
-              className="h-[1px] bg-[#B11226] mb-6"
+            <input
+              type="text"
+              placeholder="SEARCH FOR A PRODUCT, CATEGORY, COLLECTION..."
+              readOnly
+              className="w-full h-full bg-transparent border-none outline-none px-4 md:px-6 text-sm md:text-base text-black placeholder:text-black/40 font-medium uppercase tracking-wide"
+              style={{ fontFamily: 'Inter, sans-serif' }}
             />
-
-            {/* Subtext Caption */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 2.2, ease: "easeOut" }}
-              className="text-sm md:text-lg font-light tracking-[0.2em] text-black/60 uppercase"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              {caption}
-            </motion.p>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        </div>
+      </div>
+    </div>
   );
 }
