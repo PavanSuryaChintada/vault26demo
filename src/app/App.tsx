@@ -35,7 +35,7 @@ export default function App() {
           <div className="px-8 lg:px-14 py-7 flex items-center justify-between">
 
             {/* ── Brand ── */}
-            <a href="#" className="flex items-center group h-24">
+            <a href="#" className="flex items-center group h-12 md:h-24">
               <img
                 src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png"
                 alt="VAULT 26"
@@ -276,7 +276,7 @@ export default function App() {
                 <img
                   src="https://images.unsplash.com/photo-1637536701306-3214e9cec64a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Editorial"
-                  className="w-full h-[600px] object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  className="w-full h-[450px] md:h-[600px] object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 />
               </motion.div>
 
@@ -361,7 +361,7 @@ export default function App() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="group cursor-pointer flex flex-col"
               >
-                <div className="relative overflow-hidden w-full h-[600px] lg:h-[850px] bg-[#f5f5f5]">
+                <div className="relative overflow-hidden w-full h-[500px] md:h-[600px] lg:h-[850px] bg-[#f5f5f5]">
                   <img
                     src="https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=1000&auto=format&fit=crop"
                     alt="Menswear"
@@ -369,7 +369,7 @@ export default function App() {
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <h3 
-                      className="text-[15vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
+                      className="text-[20vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
                       style={{ fontFamily: 'Cormorant Garamond, serif' }}
                     >
                       MEN
@@ -398,7 +398,7 @@ export default function App() {
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="group cursor-pointer flex flex-col"
               >
-                <div className="relative overflow-hidden w-full h-[600px] lg:h-[850px] bg-[#f5f5f5]">
+                <div className="relative overflow-hidden w-full h-[500px] md:h-[600px] lg:h-[850px] bg-[#f5f5f5]">
                   <img
                     src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
                     alt="Womenswear"
@@ -406,7 +406,7 @@ export default function App() {
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <h3 
-                      className="text-[15vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
+                      className="text-[20vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
                       style={{ fontFamily: 'Cormorant Garamond, serif' }}
                     >
                       WOMEN
@@ -438,7 +438,7 @@ export default function App() {
               initial={{ x: 0 }}
               animate={{ x: "-30%" }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="whitespace-nowrap text-[15vw] font-bold uppercase tracking-tighter flex"
+              className="whitespace-nowrap text-[20vw] md:text-[15vw] font-bold uppercase tracking-tighter flex"
               style={{ fontFamily: 'Cormorant Garamond, serif' }}
             >
               <span>VAULT 26 &nbsp; ARCHIVE &nbsp; VAULT 26 &nbsp; ARCHIVE &nbsp;</span>
@@ -448,7 +448,7 @@ export default function App() {
               initial={{ x: "-30%" }}
               animate={{ x: 0 }}
               transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-              className="whitespace-nowrap text-[15vw] font-bold italic uppercase tracking-tighter flex"
+              className="whitespace-nowrap text-[20vw] md:text-[15vw] font-bold italic uppercase tracking-tighter flex"
               style={{ fontFamily: 'Cormorant Garamond, serif' }}
             >
               <span>NOT FOR EVERYONE &nbsp; NOT FOR EVERYONE &nbsp;</span>
@@ -478,15 +478,15 @@ export default function App() {
           <div className="max-w-[1600px] mx-auto text-center relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-              whileInView={{ opacity: 0.04, scale: 1, rotate: 0 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] pointer-events-none"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] lg:w-[800px] pointer-events-none"
             >
               <img 
                 src="https://res.cloudinary.com/dsqeawg67/image/upload/v1776861404/WhatsApp_Image_2026-04-21_at_23.40.39-removebg-preview_1_ztvyke.png" 
                 alt="" 
-                className="w-full h-auto object-contain opacity-20" 
+                className="w-full h-auto object-contain opacity-10 md:opacity-20 brightness-0" 
               />
             </motion.div>
 
@@ -640,7 +640,7 @@ export default function App() {
         </section>
 
         {/* Redesigned Join the Vault Section */}
-        <section className="py-48 px-6 lg:px-12 bg-white relative overflow-hidden">
+        <section className="py-24 md:py-48 px-6 lg:px-12 bg-white relative overflow-hidden">
           <div className="absolute inset-0 flex flex-col justify-center opacity-[0.03] pointer-events-none select-none">
             <motion.div
               initial={{ x: 0 }}
@@ -671,10 +671,10 @@ export default function App() {
                 whileInView={{ y: '0%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[8vw] md:text-[6vw] lg:text-[5vw] leading-tight text-black uppercase tracking-widest"
+                className="block text-[12vw] md:text-[6vw] lg:text-[5vw] leading-tight text-black uppercase tracking-[0.2em]"
                 style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 400 }}
               >
-                Join the
+                JOIN THE
               </motion.span>
             </div>
             <div className="overflow-hidden mb-16">
