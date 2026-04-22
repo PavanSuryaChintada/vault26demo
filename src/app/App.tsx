@@ -184,17 +184,17 @@ export default function App() {
         </section>
 
         {/* ATTITUDE / CONFIDENCE — clip-mask reveal from bottom */}
-        <section id="about" className="py-28 px-6 lg:px-12 bg-white overflow-hidden">
+        <section id="about" className="pt-28 pb-10 px-6 lg:px-12 bg-white overflow-hidden">
           <div className="max-w-[1600px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            <div className="flex flex-row items-baseline justify-center gap-6 md:gap-12 flex-wrap">
               <div className="overflow-hidden">
                 <motion.h2
                   initial={{ y: '100%', opacity: 0 }}
                   whileInView={{ y: '0%', opacity: 1 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight"
-                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                  className="text-[10vw] md:text-[7vw] leading-none tracking-tighter"
+                  style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
                 >
                   ATTITUDE
                 </motion.h2>
@@ -205,8 +205,8 @@ export default function App() {
                   whileInView={{ y: '0%', opacity: 1 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15vw] md:text-[10vw] leading-[0.85] tracking-tight text-right"
-                  style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
+                  className="text-[10vw] md:text-[7vw] leading-none tracking-tighter italic"
+                  style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300 }}
                 >
                   CONFIDENCE
                 </motion.h2>
@@ -223,7 +223,7 @@ export default function App() {
         </section>
 
         {/* Editorial Split — staggered word lift */}
-        <section className="py-20 px-6 lg:px-12 bg-white">
+        <section className="pb-20 pt-4 px-6 lg:px-12 bg-white">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -324,10 +324,18 @@ export default function App() {
               >
                 <div className="relative overflow-hidden w-full h-[600px] lg:h-[850px] bg-[#f5f5f5]">
                   <img
-                    src="https://images.unsplash.com/photo-1617137984095-74ef55a92ca9?q=80&w=1000&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=1000&auto=format&fit=crop"
                     alt="Menswear"
                     className="w-full h-full object-cover grayscale transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <h3 
+                      className="text-[15vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
+                      style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                    >
+                      MEN
+                    </h3>
+                  </div>
                 </div>
                 <div className="mt-5 flex flex-col gap-0.5">
                   <h3
@@ -356,10 +364,18 @@ export default function App() {
               >
                 <div className="relative overflow-hidden w-full h-[600px] lg:h-[850px] bg-[#f5f5f5]">
                   <img
-                    src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1000&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
                     alt="Womenswear"
                     className="w-full h-full object-cover grayscale transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <h3 
+                      className="text-[15vw] md:text-[10vw] font-light text-white/20 uppercase tracking-[0.2em] transition-all duration-700 group-hover:text-white/40 group-hover:scale-110"
+                      style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                    >
+                      WOMEN
+                    </h3>
+                  </div>
                 </div>
                 <div className="mt-5 flex flex-col gap-0.5">
                   <h3
@@ -532,8 +548,8 @@ export default function App() {
                 whileInView={{ y: '0%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[10vw] md:text-[8vw] lg:text-[6vw] leading-none text-black"
-                style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
+                className="block text-[8vw] md:text-[6vw] lg:text-[5vw] leading-tight text-black uppercase tracking-widest"
+                style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 400 }}
               >
                 Join the
               </motion.span>
@@ -544,7 +560,7 @@ export default function App() {
                 whileInView={{ y: '0%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[10vw] md:text-[8vw] lg:text-[6vw] leading-none italic text-[#B11226]"
+                className="block text-[12vw] md:text-[10vw] lg:text-[8vw] leading-none italic text-[#B11226] -mt-4"
                 style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
               >
                 Vault
